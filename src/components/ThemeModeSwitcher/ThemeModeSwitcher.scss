@@ -1,0 +1,237 @@
+@use '@styles/abstracts' as *;
+
+$switcher-animation-time: 700ms;
+$switcher-animation-timing-function: linear;
+
+.theme-mode-switcher {
+  @include flex-center;
+  $this: &;
+  position: relative;
+  width: 72px;
+  height: 40px;
+  column-gap: 11px;
+  background-color: var(--background-color);
+  border: 1px solid var(--border-color);
+  transition-property: background-color, border;
+  transition-duration: $switcher-animation-time;
+  transition-timing-function: $switcher-animation-timing-function;
+  border-radius: 20px;
+  cursor: pointer;
+  scale: 0.8;
+
+  @include mq(extraSmall) {
+    scale: 1;
+  }
+
+  &.dark {
+    #{$this}__icon.moon {
+      animation: moon-appear $switcher-animation-time forwards $switcher-animation-timing-function;
+    }
+
+    #{$this}__icon.sun {
+      animation: sun-disappear $switcher-animation-time forwards $switcher-animation-timing-function;
+
+      .sun-beam {
+        animation: sun-beam-disappear $switcher-animation-time forwards $switcher-animation-timing-function;
+      }
+    }
+
+    #{$this}__circle {
+      animation: slide_to_right $switcher-animation-time forwards $switcher-animation-timing-function;
+    }
+  }
+
+  &.light {
+    #{$this}__icon.moon {
+      animation: moon-disappear $switcher-animation-time forwards $switcher-animation-timing-function;
+    }
+
+    #{$this}__icon.sun {
+      animation: sun-appear $switcher-animation-time forwards $switcher-animation-timing-function;
+
+      .sun-beam {
+        animation: sun-beam-appear $switcher-animation-time forwards $switcher-animation-timing-function;
+      }
+    }
+
+    #{$this}__circle {
+      animation: slide_to_left $switcher-animation-time forwards $switcher-animation-timing-function;
+    }
+  }
+
+  &__circle {
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    width: 36px;
+    height: 36px;
+    background-color: var(--theme-mode-switcher-color);
+    border-radius: 20px;
+    transition: background-color $switcher-animation-time $switcher-animation-timing-function;
+  }
+
+  &__icon {
+    width: 22px;
+    height: 22px;
+    opacity: 0;
+
+    &.moon {
+      scale: 0.9;
+    }
+
+    &.sun {
+      transform-origin: 12px 12px;
+      scale: 1.1;
+    }
+
+    .sun-circle {
+      transform-origin: 12px 12px;
+      scale: 0.9;
+    }
+
+    .sun-beam {
+      opacity: 0;
+      transform-origin: 12px 12px;
+    }
+  }
+}
+
+@keyframes moon-appear {
+  65% {
+    opacity: 0;
+    translate: 0;
+    rotate: 0;
+  }
+  70% {
+    opacity: 1;
+    translate: 4px;
+    rotate: -20deg;
+  }
+  80% {
+    rotate: 0;
+  }
+  90% {
+    rotate: -5deg;
+  }
+  100% {
+    opacity: 1;
+    translate: 0;
+    rotate: -10deg;
+  }
+}
+
+@keyframes moon-disappear {
+  0% {
+    opacity: 1;
+  }
+  20% {
+    rotate: 20deg;
+    opacity: 1;
+  }
+  22%, 100% {
+    opacity: 0;
+  }
+}
+
+@keyframes sun-beam-appear {
+  60% {
+    opacity: 0;
+    scale: 0.6;
+  }
+  70% {
+    opacity: 1;
+    scale: 0.7;
+  }
+  85% {
+    scale: 1;
+  }
+  100% {
+    opacity: 1;
+    scale: 0.9;
+  }
+}
+
+@keyframes sun-beam-disappear {
+  0% {
+    opacity: 1;
+    scale: 0.9;
+  }
+  15%, 100%  {
+    opacity: 0;
+    scale: 0.6;
+  }
+}
+
+@keyframes sun-appear {
+  45% {
+    opacity: 0;
+    translate: 0;
+  }
+  50% {
+    opacity: 1;
+    translate: 0;
+  }
+  70% {
+    translate: -5px;
+  }
+  100% {
+    opacity: 1;
+    translate: 0;
+  }
+}
+
+@keyframes sun-disappear {
+  0% {
+    opacity: 1;
+  }
+  15%, 100% {
+    opacity: 0;
+  }
+}
+
+@keyframes slide_to_right {
+  25% {
+    width: 54px;
+  }
+  60% {
+    width: 36px;
+    translate: 32px;
+  }
+  68% {
+    border-radius: 20px;
+  }
+  70% {
+    width: 28px;
+    translate: 40px;
+    border-radius: 15px;
+  }
+  100% {
+    width: 36px;
+    translate: 32px;
+    border-radius: 20px;
+  }
+}
+
+@keyframes slide_to_left {
+  0% {
+    translate: 32px;
+  }
+  25% {
+    width: 54px;
+  }
+  45% {
+    translate: 0;
+  }
+  68% {
+    border-radius: 20px;
+  }
+  70% {
+    width: 28px;
+    border-radius: 15px;
+  }
+  100% {
+    width: 36px;
+    border-radius: 20px;
+    translate: 0;
+  }
+}
