@@ -15,9 +15,6 @@ jobs:
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
       
-    - name: 📦 Install Composer dependencies
-      run: composer install --ignore-platform-reqs
-      
     - name: 📦 Install npm dependencies
       run: npm install
       
