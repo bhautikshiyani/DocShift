@@ -14,9 +14,6 @@ jobs:
         server: ftp.devtec.tech
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        
-    - name: 📦 Update Composer dependencies
-      run: composer update
       
     - name: 📦 Install Composer dependencies
       run: composer install
