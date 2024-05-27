@@ -6,11 +6,10 @@ import ThemeModeSwitcher from "@components/ThemeModeSwitcher";
 import { ThemeMode, themeModeLocalStorageKey } from "@shared/constants"
 import { SectionAppearAnimation } from "@shared/animation";
 const navigation = [
-    { name: 'GRADIENT', href: '/gradient', current: true },
-    { name: 'COLOR SHADES', href: 'color-shades', href2: 'color-shades/:slug', current: true },
-    { name: 'SWATCHES', href: 'swatches', href2: 'swatches/:name', current: false },
-    { name: 'Projects', href: '#', current: false },
-    { name: 'Calendar', href: '#', current: false },
+    { name: 'GRADIENT', href: 'gradient'},
+    { name: 'COLOR SHADES', href: 'color-shades', href2: 'color-shades/:slug'},
+    { name: 'SWATCHES', href: 'swatches', href2: 'swatches/:name' },
+
 ]
 
 const Header = () => {
@@ -55,7 +54,7 @@ const Header = () => {
 
             <div className="container flex mx-auto px-6 py-4">
                 <h1 className="text-3xl font-bold text-gray-800">CSS Gradient Swatches</h1>
-                <nav className="hidden lg:ml-6 lg:flex ">
+                <nav className="hidden lg:ml-6 lg:flex flex-1">
                     <ul className="list-none text-center lg:space-x-2">
                         {navigation.map((item, index) => {
                             const active = isActive(item.href, item.href2);
@@ -64,8 +63,8 @@ const Header = () => {
                                     <Link
                                         to={item.href}
                                         className={classNames(
-                                            active ? 'after:w-full text-[#555]' : 'hover:text-[#555] hover:after:w-full',
-                                            'block relative py-2 px-2 text-[14px] text-[#aaa] font-bold transition-all duration-500 uppercase after:absolute after:bottom-0 after:left-0 after:right-0 after:m-auto after:w-0 after:transition-all after:duration-500 after:bg-[#aaa] after:h-[1px]'
+                                            active ? 'after:w-full text-[#555] font-bold' : 'hover:text-[#555] hover:after:w-full text-[#aaa]',
+                                            'block relative py-2 px-2 text-[14px]  font-bold transition-all duration-500 uppercase after:absolute after:bottom-0 after:left-0 after:right-0 after:m-auto after:w-0 after:transition-all after:duration-500 after:bg-[#aaa] after:h-[1px]'
                                         )}
                                     >
                                         {item.name}
@@ -75,10 +74,10 @@ const Header = () => {
                         })}
                     </ul>
                 </nav>
-                <ThemeModeSwitcher
+                {/* <ThemeModeSwitcher
                     activeThemeMode={activeThemeMode}
                     toggleThemeMode={toggleThemeMode}
-                />
+                /> */}
             </div>
         </m.header>
     )

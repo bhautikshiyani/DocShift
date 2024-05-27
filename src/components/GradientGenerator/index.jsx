@@ -107,7 +107,7 @@ const GradientGenerator = ({ addNewMessage }) => {
       <GradientColors
         gradient={gradient}
       />
-      <div className="gradient-generator mx-auto max-w-7xl md:mt-[-75px]">
+      <div className="gradient-generator mx-auto container md:mt-[-75px]">
         <div className="gradient-generator__main grid">
           <GradientPreview
             gradient={gradient}

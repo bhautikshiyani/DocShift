@@ -12,7 +12,7 @@ const GenerateCustomColorShades = () => {
         e.preventDefault();
         if (colour.startsWith("#") && colour.length >= 4) {
             colour = colour.substring(1);
-            return navigate(`/colour/${colour}`);
+            return navigate(`/color-shades/generate/${colour}`);
         } else {
             setAlert(true);
         }

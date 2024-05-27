@@ -28,14 +28,14 @@ const Gradient = () => {
 
 
   return (
-    <>
+    <div className="w-full">
       <GradientGenerator addNewMessage={addNewMessage} />
 
       <MessageContainer
         messages={messages}
         handleRemoveMessage={handleRemoveMessage}
       />
-    </>
+    </div>
   )
 }
 

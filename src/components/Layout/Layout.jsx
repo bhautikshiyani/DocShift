@@ -5,8 +5,8 @@ import { Outlet, matchPath, useLocation } from 'react-router-dom'
 
 const Layout = () => {
     const location = useLocation();
-    
-    const isSwatchesDetail = matchPath("/swatches/:name", location.pathname);
+    const isSwatchesDetail = matchPath("/swatches/:name", location.pathname) || matchPath("/gradient", location.pathname);
+
     return (
         <div className="min-h-screen bg-gray-100 flex flex-col">
             <Header />

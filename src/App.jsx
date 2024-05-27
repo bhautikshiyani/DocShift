@@ -10,9 +10,10 @@ import GradientsShadesDetails from '@pages/GradientsShades/GradientsShadesDetail
 import { Tooltip } from 'react-tooltip';
 import GenerateCustomColorShades from '@pages/ColorShades/GenerateCustomColorShades';
 import Colours from '@pages/ColorShades/Colours';
+import GenerateColorShadesJson from "@pages/ColorShades/GenerateColorShadesJson";
+import PrivacyPolicy from "@pages/PrivacyPolicy";
 
 const App = () => {
-  
 
   return (
     <>
@@ -22,10 +23,12 @@ const App = () => {
           <Route path="/gradient" element={<Gradient />} />
           <Route path="color-shades" element={<ColorShades />} />
           <Route path='color-shades/generate' element={<GenerateCustomColorShades />} />
+          <Route path='color-shades/generate/json' element={<GenerateColorShadesJson />} />
           <Route path='color-shades/generate/:id' element={<Colours />} />
           <Route path="color-shades/:slug" element={<ColorShadesDetails />} />
           <Route path="swatches" element={<Swatches />} />
           <Route path="swatches/:name" element={<GradientsShadesDetails />} />
+          <Route path="privacy-policy" element={<PrivacyPolicy />} />
         </Route>
         <Route path="*" element={<NoMatch />} />
       </Routes>

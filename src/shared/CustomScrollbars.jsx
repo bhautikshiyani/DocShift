@@ -5,6 +5,7 @@ const renderThumb = ({ style, ...props }) => {
     const thumbStyle = {
         backgroundColor: '#4A5568',
         borderRadius: '6px',
+        height:'8px'
     };
     return <div style={{ ...style, ...thumbStyle }} {...props} />;
 };
