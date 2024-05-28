@@ -12,6 +12,7 @@ import GenerateCustomColorShades from '@pages/ColorShades/GenerateCustomColorSha
 import Colours from '@pages/ColorShades/Colours';
 import GenerateColorShadesJson from "@pages/ColorShades/GenerateColorShadesJson";
 import PrivacyPolicy from "@pages/PrivacyPolicy";
+import Home from "./pages/Home";
 
 const App = () => {
 
@@ -20,6 +21,7 @@ const App = () => {
       <Tooltip style={{ fontSize: '12px', padding: '6px 10px', zIndex: '9999999999' }} id="my-tooltip" />
       <Routes>
         <Route path="/" element={<Layout />}>
+          <Route path="/"  element={<Home />} />
           <Route path="/gradient" element={<Gradient />} />
           <Route path="color-shades" element={<ColorShades />} />
           <Route path='color-shades/generate' element={<GenerateCustomColorShades />} />

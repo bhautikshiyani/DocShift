@@ -2,7 +2,7 @@ import React from 'react'
 
 const Footer = () => {
     return (
-        <footer className="bg-white shadow">
+        <footer className="bg-white dark:bg-dark-primary-base dark:bg-mix-dark-surface-base dark:bg-mix-amount-[90]  shadow">
             <div className="container mx-auto px-6 py-4 text-center">
                 <p className="text-gray-600">&copy; 2017 - 2024 CSS Gradient</p>
             </div>

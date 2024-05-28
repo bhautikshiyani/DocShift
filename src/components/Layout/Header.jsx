@@ -1,4 +1,4 @@
-import React, { useState, useLayoutEffect } from "react"
+import React, { useState, useLayoutEffect, useEffect } from "react"
 import { Link, useLocation } from 'react-router-dom'
 import classNames from '@shared/classNames'
 import { motion as m } from "framer-motion";
@@ -6,14 +6,13 @@ import ThemeModeSwitcher from "@components/ThemeModeSwitcher";
 import { ThemeMode, themeModeLocalStorageKey } from "@shared/constants"
 import { SectionAppearAnimation } from "@shared/animation";
 const navigation = [
-    { name: 'GRADIENT', href: 'gradient'},
-    { name: 'COLOR SHADES', href: 'color-shades', href2: 'color-shades/:slug'},
+    { name: 'GRADIENT', href: 'gradient' },
+    { name: 'COLOR SHADES', href: 'color-shades', href2: 'color-shades/:slug' },
     { name: 'SWATCHES', href: 'swatches', href2: 'swatches/:name' },
 
 ]
 
 const Header = () => {
-
     const [activeThemeMode, setActiveThemeMode] = useState(null)
     const setThemeMode = modeName => {
         document.documentElement.setAttribute("data-theme", modeName)
@@ -44,14 +43,32 @@ const Header = () => {
         const dynamicRegex = new RegExp(`^/${dynamicPattern}$`);
         return location.pathname === `/${href}` || (dynamicPattern && dynamicRegex.test(location.pathname));
     };
+
+
+
+
+    // Sticky Menu Area
+    useEffect(() => {
+        window.addEventListener('scroll', isSticky);
+        return () => {
+            window.removeEventListener('scroll', isSticky);
+        };
+    });
+
+
+    /* Method that will fix header after a specific scrollable */
+    const isSticky = (e) => {
+        const header = document.querySelector('.header-section');
+        const scrollTop = window.scrollY;
+        scrollTop >= 10 ? header.classList.remove('is-sticky') : header.classList.add('is-sticky');
+    };
     return (
         <m.header
             initial={SectionAppearAnimation.initial}
             animate={SectionAppearAnimation.animate}
             transition={SectionAppearAnimation.transition(0)}
-            className="bg-white header shadow"
+            className="sticky header-section z-[9999] top-0 transition duration-300 dark:bg-dark-primary-base dark:bg-mix-dark-surface-base dark:bg-mix-amount-[95] bg-light-primary-base bg-mix-light-surface-base bg-mix-amount-[95] header shadow"
         >
-
             <div className="container flex mx-auto px-6 py-4">
                 <h1 className="text-3xl font-bold text-gray-800">CSS Gradient Swatches</h1>
                 <nav className="hidden lg:ml-6 lg:flex flex-1">
@@ -74,10 +91,10 @@ const Header = () => {
                         })}
                     </ul>
                 </nav>
-                {/* <ThemeModeSwitcher
+                <ThemeModeSwitcher
                     activeThemeMode={activeThemeMode}
                     toggleThemeMode={toggleThemeMode}
-                /> */}
+                />
             </div>
         </m.header>
     )
