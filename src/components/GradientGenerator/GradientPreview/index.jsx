@@ -45,7 +45,7 @@ const GradientPreview = ({
             </div>
             <input
               aria-label="color-opacity"
-              className={`gradient-active-color__input border border-gray-200 dark:border-gray-700 ${pallet.id === activePaletteId ? 'dark:bg-dark-primary-base dark:bg-mix-dark-surface-base dark:bg-mix-amount-[95]' : 'dark:bg-dark-primary-base dark:bg-mix-dark-surface-base dark:bg-mix-amount-[95] bg-light-primary-base bg-mix-light-surface-base bg-mix-amount-[95]'}`}
+              className={`gradient-active-color__input border py-3 border-gray-200 dark:border-gray-700 ${pallet.id === activePaletteId ? 'dark:bg-dark-primary-base dark:bg-mix-dark-surface-base dark:bg-mix-amount-[95]' : 'dark:bg-dark-primary-base dark:bg-mix-dark-surface-base dark:bg-mix-amount-[95] bg-light-primary-base bg-mix-light-surface-base bg-mix-amount-[95]'}`}
               value={pallet.position}
               onChange={event => handleColorPositionChange(pallet.id, event.target.value)}
             />

@@ -12,8 +12,6 @@ function Swatches() {
             setHasMore(false);
             return;
         }
-
-        // Simulate a fetch call
         setTimeout(() => {
             setGradients((prevGradients) => [
                 ...prevGradients,

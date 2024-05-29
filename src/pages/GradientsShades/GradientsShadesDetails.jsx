@@ -6,7 +6,6 @@ import { MdOutlineRotateRight } from "react-icons/md";
 import { RiDownloadLine } from 'react-icons/ri';
 import html2canvas from 'html2canvas';
 import gradientsData from "@assets/gradients.json";
-// import CustomScrollbars from '@shared/CustomScrollbars';
 import classNames from '@shared/classNames';
 import { IoCodeSharp } from 'react-icons/io5';
 import ModalBox from '@components/Modal/ModalBox';
@@ -38,7 +37,6 @@ const GradientsShadesDetails = () => {
         });
     };
 
-
     function handleClick(item) {
         navigate(`/swatches/${item?.name}`, { state: { data: item?.colors } })
     }
@@ -48,18 +46,18 @@ const GradientsShadesDetails = () => {
     return (
         <>
             <section className=" flex-grow flex flex-col ">
-                <div className='px-4 flex items-center py-2 border-t bg-white'>
-                    <div className='divide-x flex gap-2 items-center '>
+                <div className='px-4 flex items-center py-2 border-t border-gray-200 dark:border-gray-700 transition duration-300 dark:bg-dark-primary-base dark:bg-mix-dark-surface-base dark:bg-mix-amount-[95] bg-light-primary-base bg-mix-light-surface-base bg-mix-amount-[95] header shadow is-sticky'>
+                    <div className='divide-x divide-gray-200 dark:divide-gray-700 flex gap-2 items-center '>
                         <button
                             onClick={() => setSidebarOpen(!sidebarOpen)}
                             className={classNames(
                                 sidebarOpen ? 'rotate-0' : 'rotate-90',
-                                'w-[36px] h-[36px] hover:bg-[#f2f2f3] rounded-md flex items-center justify-center transition-all duration-100 text-[24px]'
+                                'w-[36px] h-[36px] text-black dark:text-white hover:bg-[#f2f2f3] rounded-md flex items-center justify-center transition-all duration-100 text-[24px]'
                             )}
                         >
                             <HiOutlineMenu />
                         </button>
-                        <span className='pl-2 hidden sm:block'>
+                        <span className='pl-2 text-black dark:text-white hidden sm:block'>
                             Show all gradients
                         </span>
                     </div>
@@ -73,21 +71,21 @@ const GradientsShadesDetails = () => {
                                             <span className="text-sm hidden sm:block">{items}</span>
                                         </button>
                                         {
-                                            index !== data.length - 1 && <FaArrowRightLong className='text-[10px]' />
+                                            index !== data.length - 1 && <FaArrowRightLong className='text-[10px] text-black dark:text-white' />
                                         }
                                     </Fragment>
                                 )
                             })}
                         </div>
                     </div>
-                    <div className='flex divide-x '>
+                    <div className='flex divide-x divide-gray-200 dark:divide-gray-700 '>
                         <div className='px-2'>
                             <button
                                 data-tooltip-id="my-tooltip"
                                 data-tooltip-content="Rotate Gradient"
                                 data-tooltip-place="bottom"
                                 onClick={setRotate}
-                                className='w-[30px] active:rotate-90 h-[30px] hover:bg-[#f2f2f3] rounded-md flex items-center justify-center transition-all duration-200 text-[16px]'>
+                                className='w-[30px] active:rotate-90 h-[30px] text-black dark:text-white hover:bg-[#f2f2f3] rounded-md flex items-center justify-center transition-all duration-200 text-[16px]'>
                                 <MdOutlineRotateRight />
                             </button>
                         </div>
@@ -97,7 +95,7 @@ const GradientsShadesDetails = () => {
                                 data-tooltip-id="my-tooltip"
                                 data-tooltip-content="Get css"
                                 data-tooltip-place="bottom"
-                                className='w-[30px] h-[30px] hover:bg-[#f2f2f3] rounded-md flex items-center justify-center transition-all duration-200 text-[16px]'>
+                                className='w-[30px] h-[30px] hover:bg-[#f2f2f3] text-black dark:text-white rounded-md flex items-center justify-center transition-all duration-200 text-[16px]'>
                                 <IoCodeSharp />
                             </button>
                         </div>
@@ -106,7 +104,7 @@ const GradientsShadesDetails = () => {
                                 data-tooltip-id="my-tooltip"
                                 data-tooltip-content="Get .png"
                                 data-tooltip-place="bottom"
-                                className='w-[30px] h-[30px] hover:bg-[#f2f2f3] rounded-md flex items-center justify-center transition-all duration-200 text-[16px]'
+                                className='w-[30px] h-[30px] hover:bg-[#f2f2f3] text-black dark:text-white rounded-md flex items-center justify-center transition-all duration-200 text-[16px]'
                                 onClick={downloadImage}>
                                 <RiDownloadLine />
                             </button>
@@ -150,7 +148,6 @@ const GradientsShadesDetails = () => {
                 </div>
             </section>
             <ModalBox isOpen={isOpen} angle={angle} colors={data} setIsOpen={setIsOpen} />
-
         </>
     )
 }
