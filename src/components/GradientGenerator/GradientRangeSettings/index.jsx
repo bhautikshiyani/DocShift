@@ -30,7 +30,7 @@ const GradientRangeSettings = ({
   }
 
   return (
-    <section className="gradient-range-settings">
+    <section className="gradient-range-settings dark:bg-dark-primary-base border border-gray-200 dark:border-gray-700 dark:bg-mix-dark-surface-base dark-primary-base dark:bg-mix-amount-[90] bg-light-surface-base bg-mix-light-surface-base bg-mix-amount-[90]">
       <div
         className="gradient-range-settings__slider-container"
         style={{ background: gradient }}

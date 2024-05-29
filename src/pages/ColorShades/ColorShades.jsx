@@ -14,7 +14,7 @@ const ColorShades = () => {
     <>
       <section>
         <div className='flex items-start'>
-          <p className="text-gray-700 mb-8 flex-1">
+          <p className="text-gray-700 dark:text-gray-400 mb-8 flex-1">
             Color shades are lighter and darker variations of a particular color. While in color theory, a "shade" is created by adding black and a "tint" is made by adding white, "shade" generally refers to the whole range of possible colors.
           </p>
           <button  onClick={() => navigate('/color-shades/generate')} className='bg-gray-800 hover:bg-gray-900 transition duration-200 rounded px-3 py-2 text-white '>
@@ -23,14 +23,14 @@ const ColorShades = () => {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {colors.map(color => (
-            <div onClick={() => navigate(`/color-shades/${color.name}`)} key={color.name} className="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div onClick={() => navigate(`/color-shades/${color.name}`)} key={color.name} className="dark:bg-dark-primary-base dark:bg-mix-dark-surface-base dark-primary-base dark:bg-mix-amount-[90] bg-light-surface-base bg-mix-light-surface-base bg-mix-amount-[90] rounded-lg shadow-lg overflow-hidden">
               <div className="grid grid-row-5">
                 {color.shades.map((shade, index) => (
                   <div key={index} className="h-10" style={{ backgroundColor: shade }}></div>
                 ))}
               </div>
               <div className="p-4">
-                <h2 className="text-xl font-semibold text-gray-800">{color.name}</h2>
+                <h2 className="text-xl font-semibold dark:text-white text-gray-800">{color.name}</h2>
               </div>
             </div>
           ))}

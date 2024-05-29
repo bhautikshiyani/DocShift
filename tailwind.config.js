@@ -30,7 +30,7 @@ export default {
         'light-primary-base': '#382bf0',
         'light-surface-base':'#fff',
         'dark-primary-base': '#d1c4ff',
-        'dark-surface-base':'#121212'
+        'dark-surface-base':'#121212',
       },
     },
   },

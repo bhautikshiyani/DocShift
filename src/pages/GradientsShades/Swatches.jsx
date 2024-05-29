@@ -24,8 +24,8 @@ function Swatches() {
     return (
         <section>
             <div className="mb-8">
-                <h2 className="text-xl font-semibold text-gray-800">Take a colorful stroll on Gradient Lane</h2>
-                <p className="text-gray-700">
+                <h2 className="text-xl font-semibold text-gray-800 dark:text-white">Take a colorful stroll on Gradient Lane</h2>
+                <p className="text-gray-700 dark:text-gray-400">
                     Oh hey there, thanks for stopping by. You came here looking for inspiration, thus I feel obliged to tell you that...you came to the right place! We have a nicely curated collection of beautiful gradients on this page and also a list of some of the best resources for swatches all across the web. Have fun exploring!
                 </p>
             </div>

@@ -4,12 +4,10 @@ import { motion as m } from "framer-motion";
 import { hexToRgbaObject, splitGradientString } from "@shared/utils";
 import { defaultGradient, GradientTypes } from "@shared/constants";
 import { SectionAppearAnimation } from "@shared/animation";
-import GradientPreview from "./GradientPreview";
 import GradientActivePalette from "./GradientActivePalette";
 import GradientTypeAndAngle from "./GradientTypeAndAngle";
 import GradientRangeSettings from "./GradientRangeSettings";
 import GradientCode from "./GradientCode";
-
 import "./GradientGenerator.scss";
 import GradientColors from "./GradientColors";
 
@@ -74,6 +72,17 @@ const GradientGenerator = ({ addNewMessage }) => {
     initGradient(defaultGradient);
   };
 
+
+  const handleColorPositionChange = (id, newPosition) => {
+    setPalettes(prevPalettes => 
+      prevPalettes.map(palette => 
+        palette.id === id 
+          ? { ...palette, position: newPosition }
+          : palette
+      )
+    );
+  };
+
   const handleGradientColorChange = (color, isRGBA) => {
     const clonePalettes = [...palettes];
     const neededPalette = clonePalettes.find(
@@ -104,19 +113,9 @@ const GradientGenerator = ({ addNewMessage }) => {
 
   return (
     <div>
-      <GradientColors
-        gradient={gradient}
-      />
-      <div className="gradient-generator mx-auto container md:mt-[-75px]">
+      <GradientColors gradient={gradient}/>
+      <div className="gradient-generator mx-auto px-6 container md:mt-[-75px]">
         <div className="gradient-generator__main grid">
-          <GradientPreview
-            gradient={gradient}
-            palettes={palettes}
-            activePaletteId={activePalette?.id}
-            setActivePalette={setActivePalette}
-            handleDeletePalette={handleDeletePalette}
-          />
-
           <div className="gradient-generator-settings">
             <m.div
               initial={SectionAppearAnimation.initial}
@@ -134,23 +133,25 @@ const GradientGenerator = ({ addNewMessage }) => {
 
               {activePalette && (
                 <GradientActivePalette
+                  setActivePalette={setActivePalette}
                   activePalette={activePalette}
+                  handleColorPositionChange={handleColorPositionChange}
+                  gradient={gradient}
+                  palettes={palettes}
                   canDeletePalette={palettes.length > 2}
                   handleGradientColorChange={handleGradientColorChange}
                   handleDeletePalette={handleDeletePalette}
                 />
               )}
-            </m.div>
-
             <GradientTypeAndAngle
               gradientType={gradientType}
               gradientPosition={gradientPosition}
               handleGradientTypeChange={handleGradientTypeChange}
               setGradientPosition={setGradientPosition}
             />
+            </m.div>
           </div>
         </div>
-
         <GradientCode
           gradient={gradient}
           resetGradient={resetGradient}

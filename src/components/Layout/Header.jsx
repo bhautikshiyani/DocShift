@@ -6,6 +6,7 @@ import ThemeModeSwitcher from "@components/ThemeModeSwitcher";
 import { ThemeMode, themeModeLocalStorageKey } from "@shared/constants"
 import { SectionAppearAnimation } from "@shared/animation";
 const navigation = [
+    { name: 'Home', href: '' },
     { name: 'GRADIENT', href: 'gradient' },
     { name: 'COLOR SHADES', href: 'color-shades', href2: 'color-shades/:slug' },
     { name: 'SWATCHES', href: 'swatches', href2: 'swatches/:name' },
@@ -45,8 +46,6 @@ const Header = () => {
     };
 
 
-
-
     // Sticky Menu Area
     useEffect(() => {
         window.addEventListener('scroll', isSticky);
@@ -70,7 +69,7 @@ const Header = () => {
             className="sticky header-section z-[9999] top-0 transition duration-300 dark:bg-dark-primary-base dark:bg-mix-dark-surface-base dark:bg-mix-amount-[95] bg-light-primary-base bg-mix-light-surface-base bg-mix-amount-[95] header shadow"
         >
             <div className="container flex mx-auto px-6 py-4">
-                <h1 className="text-3xl font-bold text-gray-800">CSS Gradient Swatches</h1>
+                <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#1c1c1c] to-[#2b040e] dark:from-[#ffd12a] dark:to-[#ff5e9d]">CSS Gradient Swatches</h1>
                 <nav className="hidden lg:ml-6 lg:flex flex-1">
                     <ul className="list-none text-center lg:space-x-2">
                         {navigation.map((item, index) => {
@@ -80,8 +79,8 @@ const Header = () => {
                                     <Link
                                         to={item.href}
                                         className={classNames(
-                                            active ? 'after:w-full text-[#555] font-bold' : 'hover:text-[#555] hover:after:w-full text-[#aaa]',
-                                            'block relative py-2 px-2 text-[14px]  font-bold transition-all duration-500 uppercase after:absolute after:bottom-0 after:left-0 after:right-0 after:m-auto after:w-0 after:transition-all after:duration-500 after:bg-[#aaa] after:h-[1px]'
+                                            active ? 'after:w-full dark:text-dark-primary-base text-light-primary-base font-bold' : 'text-dark-surface-base dark:text-light-surface-base  hover:dark:text-dark-primary-base hover:text-light-primary-base hover:after:w-full ',
+                                            'block relative py-2 px-2 text-[14px] transition-all duration-500 uppercase after:absolute after:bottom-0 after:left-0 after:right-0 after:m-auto after:w-0 after:transition-all after:duration-500 after:dark:bg-dark-primary-base after:bg-light-primary-base after:h-[1px]'
                                         )}
                                     >
                                         {item.name}

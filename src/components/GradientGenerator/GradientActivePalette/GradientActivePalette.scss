@@ -6,19 +6,10 @@ $trash-icon-animation-timing-function: ease-in-out;
 .gradient-active-color {
   @include theme-transition;
   $this: &;
-  // min-height: 189px;
   padding: 24px 32px 32px 32px;
-  background-color: var(--surface-color);
-  border-left: 2px solid var(--border-color);
-  border-right: 2px solid var(--border-color);
-  border-bottom: 2px solid var(--border-color);
-  border-bottom-left-radius: 6px;
-  border-bottom-right-radius: 6px;
-
-  // @include mq(small) {
-  //   width: $section-width;
-  // }
-
+  .react-colorful {
+    width: 100% !important;
+}
   .gradient-generator__subheader {
     margin-bottom: 16px;
   }
@@ -51,6 +42,7 @@ $trash-icon-animation-timing-function: ease-in-out;
   &__settings {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     row-gap: 16px;
   
   }
@@ -127,11 +119,8 @@ $trash-icon-animation-timing-function: ease-in-out;
   }
 
   &__delete-btn {
-    @include oval-button-danger(52px, 88px);
+    @include oval-button-danger(32px, 32px);
     padding: 0;
-    grid-column: 2 / 3;
-    grid-row: 1;
-    justify-self: end;
 
     @include mq(small) {
       grid-column: unset;
@@ -146,8 +135,8 @@ $trash-icon-animation-timing-function: ease-in-out;
   }
 
   &__delete-icon {
-    width: 52px;
-    height: 88px;
+    width: 30px;
+    height: 30px;
 
     path {
       scale: 0.4;

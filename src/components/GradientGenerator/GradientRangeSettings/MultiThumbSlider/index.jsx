@@ -53,7 +53,7 @@ const MultiThumbSlider = ({
       })}
       onClick={handleAddNewColor}
     >
-      {palettes.map((palette , index) => (
+      {palettes.map((palette, index) => (
         <>
           <input
             key={index}
@@ -77,11 +77,11 @@ const MultiThumbSlider = ({
             }
           />
           <span
-            className={classnames("multi-thumb-slider__valuedown", {
+            className={classnames("multi-thumb-slider__valuedown  border border-gray-200 dark:border-gray-700 dark:bg-dark-primary-base dark:bg-mix-dark-surface-base dark:bg-mix-amount-[95] bg-light-primary-base bg-mix-light-surface-base bg-mix-amount-[95]", {
               active: activePaletteId === palette.id,
               value: palette.position,
             })}
-            style={{ "--value": `${palette.position}%`  }}
+            style={{ "--value": `${palette.position}%` }}
           >
             {palette.position}
           </span>

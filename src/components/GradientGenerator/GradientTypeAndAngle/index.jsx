@@ -153,11 +153,7 @@ const GradientTypeAndAngle = ({
   }
 
   return (
-    <m.section
-      initial={SectionAppearAnimation.initial}
-      animate={SectionAppearAnimation.animate}
-      transition={SectionAppearAnimation.transition(0.7)}
-      className="gradient-type-and-angle"
+    <div className="gradient-type-and-angle border-t-0 dark:bg-dark-primary-base border border-gray-200 dark:border-gray-700 dark:bg-mix-dark-surface-base dark-primary-base dark:bg-mix-amount-[90] bg-light-surface-base bg-mix-light-surface-base bg-mix-amount-[90]"
     >
       <div className="gradient-type">
         <h2 className="gradient-generator__subheader">Type</h2>
@@ -215,7 +211,7 @@ const GradientTypeAndAngle = ({
 
             <input
               aria-label="angle"
-              className="gradient-angle-linear__input"
+              className="gradient-angle-linear__input border border-gray-200 dark:border-gray-700 dark:bg-dark-primary-base dark:bg-mix-dark-surface-base dark:bg-mix-amount-[95] bg-light-primary-base bg-mix-light-surface-base bg-mix-amount-[95]"
               value={angleInDegree}
               onChange={event => handleDegreeChange(event.target.value)}
               onBlur={event => handleDegreeBlur(event.target.value)}
@@ -257,7 +253,7 @@ const GradientTypeAndAngle = ({
           </div>
         </div>
       )}
-    </m.section>
+    </div>
   )
 }
 

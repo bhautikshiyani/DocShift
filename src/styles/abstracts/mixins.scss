@@ -49,7 +49,7 @@
   text-transform: capitalize;
   color: var(--surface-color);
   background-color: var(--primary-color);
-  border-radius: 8px;
+  border-radius: 4px;
   padding: 0 30px;
   overflow: hidden;
   transition:
@@ -62,7 +62,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    border-radius: 8px;
+    border-radius: 4px;
     background-color: var(--primary-hover);
     transform: scaleY(0);
     transform-origin: bottom;
@@ -169,8 +169,6 @@
   font-family: $font-main-semi-bold;
   line-height: 20px;
   color: var(--text-color);
-  background-color: var(--surface-color);
-  border: 2px solid var(--border-color);
   border-radius: 8px;
   outline: none;
 
