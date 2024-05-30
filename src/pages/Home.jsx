@@ -74,8 +74,8 @@ const Home = () => {
                 </div>
                 <div className=' p-4 rounded-[12px] bg-[var(--theme-surface-body-pane)] dark:bg-[var(--theme-surface-container)] '>
                     <h2 className='font-bold text-black dark:text-white text-[20px]'>Tools</h2>
-                    <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4'>
-                        <div className='dark:bg-dark-primary-base flex items-start gap-4 rounded-[12px] p-5 bg-[var(--theme-surface-a10)] dark:bg-[var(--theme-surface-container-low)]'>
+                    <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4'>
+                        <div className='flex items-start gap-4 rounded-[12px] p-5 bg-[var(--theme-surface-a10)] dark:bg-[var(--theme-surface-container-low)]'>
                             <div className='w-[45px] rounded text-[24px] flex items-center justify-center h-[45px] text-white bg-[linear-gradient(135deg,#4327f2,#2a11c5)]'>
                                 <HiCode />
                             </div>

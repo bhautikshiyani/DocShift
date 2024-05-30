@@ -111,7 +111,7 @@ const GradientActivePalette = ({
   const { red, green, blue } = rgbaObject
 
   return (
-    <section className="gradient-active-color p-[24px_16px_32px_16px] md:p-[24px_32px_32px_32px]  dark:bg-dark-primary-base border border-gray-200 border-t-0 dark:border-gray-700 bg-[var(--theme-surface-body-pane)] dark:bg-[var(--theme-surface-container)]">
+    <section className="gradient-active-color p-[24px_16px_32px_16px] md:p-[24px_32px_32px_32px] border border-gray-200 border-t-0 dark:border-gray-700 bg-[var(--theme-surface-body-pane)] dark:bg-[var(--theme-surface-container)]">
       <h2 className="gradient-generator__subheader">Color</h2>
       <div className="relative grid md:grid-cols-2 lg:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-200 dark:divide-gray-700">
         <div

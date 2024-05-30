@@ -30,7 +30,7 @@ const GradientRangeSettings = ({
   }
 
   return (
-    <section className="gradient-range-settings p-[32px_16px_36px_16px] md:p-[32px_32px_36px_32px] dark:bg-dark-primary-base border border-gray-200 dark:border-gray-700 bg-[var(--theme-surface-body-pane)] dark:bg-[var(--theme-surface-container)]">
+    <section className="gradient-range-settings p-[32px_16px_36px_16px] md:p-[32px_32px_36px_32px] border border-gray-200 dark:border-gray-700 bg-[var(--theme-surface-body-pane)] dark:bg-[var(--theme-surface-container)]">
       <div
         className="gradient-range-settings__slider-container"
         style={{ background: gradient }}

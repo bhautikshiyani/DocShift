@@ -16,7 +16,7 @@ const GradientPreview = ({
   handleDeletePalette,
   handleColorPositionChange
 }) => (
-  <div className="gradient-preview md:col-span-2 md:!border-l-0 lg:!border-l md:!border-t lg:!border-t-0  md:mt-4 md:pt-4 lg:mt-0  lg:col-span-1 lg:pl-4 pt-6 lg:pt-0 dark:bg-dark-primary-base bg-[var(--theme-surface-body-pane)] dark:bg-[var(--theme-surface-container)] ">
+  <div className="gradient-preview md:col-span-2 md:!border-l-0 lg:!border-l md:!border-t lg:!border-t-0 md:mt-4 md:pt-4 lg:mt-0  lg:col-span-1 lg:pl-4 pt-6 lg:pt-0">
     <div className="grid">
       {[...palettes]
         .sort((paletteA, paletteB) => paletteA.position - paletteB.position)

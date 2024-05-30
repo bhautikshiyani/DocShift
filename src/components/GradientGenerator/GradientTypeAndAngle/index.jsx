@@ -153,7 +153,7 @@ const GradientTypeAndAngle = ({
   }
 
   return (
-    <div className="gradient-type-and-angle p-[32px_16px_36px_16px] md:p-[32px_32px_36px_32px] border-t-0 dark:bg-dark-primary-base border border-gray-200 dark:border-gray-700 bg-[var(--theme-surface-body-pane)] dark:bg-[var(--theme-surface-container)]"
+    <div className="gradient-type-and-angle p-[32px_16px_36px_16px] md:p-[32px_32px_36px_32px] border-t-0  border border-gray-200 dark:border-gray-700 bg-[var(--theme-surface-body-pane)] dark:bg-[var(--theme-surface-container)]"
     >
       <div className="gradient-type">
         <h2 className="gradient-generator__subheader">Type</h2>
