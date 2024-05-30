@@ -77,7 +77,7 @@ const MultiThumbSlider = ({
             }
           />
           <span
-            className={classnames("multi-thumb-slider__valuedown  border border-gray-200 dark:border-gray-700 dark:bg-dark-primary-base dark:bg-mix-dark-surface-base dark:bg-mix-amount-[95] bg-light-primary-base bg-mix-light-surface-base bg-mix-amount-[95]", {
+            className={classnames("multi-thumb-slider__valuedown  border border-gray-200 dark:border-gray-700 dark:bg-[var(--theme-surface-container-low)] bg-[var(--theme-surface-container)]", {
               active: activePaletteId === palette.id,
               value: palette.position,
             })}

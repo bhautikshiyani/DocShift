@@ -66,9 +66,9 @@ const Header = () => {
             initial={SectionAppearAnimation.initial}
             animate={SectionAppearAnimation.animate}
             transition={SectionAppearAnimation.transition(0)}
-            className="sticky header-section z-[9999] top-0 transition duration-300 dark:bg-dark-primary-base dark:bg-mix-dark-surface-base dark:bg-mix-amount-[95] bg-light-primary-base bg-mix-light-surface-base bg-mix-amount-[95] header shadow"
+            className="sticky header-section z-[9999] top-0 transition duration-300 bg-[var(--theme-surface-body-pane)] dark:bg-[var(--theme-surface-container)] header shadow"
         >
-            <div className="container flex mx-auto px-6 py-4">
+            <div className="container justify-between flex mx-auto px-6 py-4">
                 <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#1c1c1c] to-[#2b040e] dark:from-[#ffd12a] dark:to-[#ff5e9d]">DocShift</h1>
                 <nav className="hidden lg:ml-6 lg:flex flex-1">
                     <ul className="list-none text-center lg:space-x-2">

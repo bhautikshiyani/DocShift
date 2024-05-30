@@ -4,7 +4,7 @@ import { RiArrowRightLine } from 'react-icons/ri'
 
 const GradientSwatch = ({ code, onCopy, handleClick, tooltip, status }) => {
     return (
-        <div className="dark:bg-dark-primary-base dark:bg-mix-dark-surface-base dark-primary-base dark:bg-mix-amount-[90] bg-light-surface-base bg-mix-light-surface-base bg-mix-amount-[90] rounded-lg shadow-lg overflow-hidden cursor-pointer">
+        <div className="bg-[var(--theme-surface-body-pane)] dark:bg-[var(--theme-surface-container)] rounded-lg shadow-lg overflow-hidden cursor-pointer">
             <div className="h-[150px] relative">
                 {
                     status ?

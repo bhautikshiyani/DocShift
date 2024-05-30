@@ -153,7 +153,7 @@ const GradientTypeAndAngle = ({
   }
 
   return (
-    <div className="gradient-type-and-angle border-t-0 dark:bg-dark-primary-base border border-gray-200 dark:border-gray-700 dark:bg-mix-dark-surface-base dark-primary-base dark:bg-mix-amount-[90] bg-light-surface-base bg-mix-light-surface-base bg-mix-amount-[90]"
+    <div className="gradient-type-and-angle p-[32px_16px_36px_16px] md:p-[32px_32px_36px_32px] border-t-0 dark:bg-dark-primary-base border border-gray-200 dark:border-gray-700 bg-[var(--theme-surface-body-pane)] dark:bg-[var(--theme-surface-container)]"
     >
       <div className="gradient-type">
         <h2 className="gradient-generator__subheader">Type</h2>
@@ -211,7 +211,7 @@ const GradientTypeAndAngle = ({
 
             <input
               aria-label="angle"
-              className="gradient-angle-linear__input border border-gray-200 dark:border-gray-700 dark:bg-dark-primary-base dark:bg-mix-dark-surface-base dark:bg-mix-amount-[95] bg-light-primary-base bg-mix-light-surface-base bg-mix-amount-[95]"
+              className="gradient-angle-linear__input border border-gray-200 dark:border-gray-700 dark:bg-[var(--theme-surface-container-low)] bg-[var(--theme-surface-a10)] "
               value={angleInDegree}
               onChange={event => handleDegreeChange(event.target.value)}
               onBlur={event => handleDegreeBlur(event.target.value)}

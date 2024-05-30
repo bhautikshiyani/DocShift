@@ -111,12 +111,12 @@ const GradientActivePalette = ({
   const { red, green, blue } = rgbaObject
 
   return (
-    <section className="gradient-active-color dark:bg-dark-primary-base border border-gray-200 border-t-0 dark:border-gray-700 dark:bg-mix-dark-surface-base dark-primary-base dark:bg-mix-amount-[90] bg-light-surface-base bg-mix-light-surface-base bg-mix-amount-[90]">
+    <section className="gradient-active-color p-[24px_16px_32px_16px] md:p-[24px_32px_32px_32px]  dark:bg-dark-primary-base border border-gray-200 border-t-0 dark:border-gray-700 bg-[var(--theme-surface-body-pane)] dark:bg-[var(--theme-surface-container)]">
       <h2 className="gradient-generator__subheader">Color</h2>
-      <div className="relative grid grid-cols-3 divide-x divide-gray-200 dark:divide-gray-700">
+      <div className="relative grid md:grid-cols-2 lg:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-200 dark:divide-gray-700">
         <div
           ref={pickerWrapperRef}
-          className="pr-4"
+          className="md:pr-4 pb-6 md:pb-0"
         >
           <Picker color={hexColor} onChange={handlePickNewHexColor} />
         </div>
@@ -125,12 +125,12 @@ const GradientActivePalette = ({
             duration: 0.7,
             ease: "easeInOut"
           }}
-          className="gradient-active-color__settings flex-1 px-4"
+          className="gradient-active-color__settings flex-1 py-6 md:py-0 md:px-4"
         >
           <div className="gradient-active-color__inputs-container">
             <input
               aria-label="color-value"
-              className="gradient-active-color__input border border-gray-200 dark:border-gray-700 dark:bg-dark-primary-base dark:bg-mix-dark-surface-base dark:bg-mix-amount-[95] bg-light-primary-base bg-mix-light-surface-base bg-mix-amount-[95] "
+              className="gradient-active-color__input !outline-none !shadow-none !ring-0 border border-gray-200 dark:border-gray-700 dark:bg-[var(--theme-surface-container-low)] bg-[var(--theme-surface-a10)] "
               placeholder="Color"
               value={hexColorInput}
               onChange={event => setHexColorInput(event.target.value)}
@@ -140,7 +140,7 @@ const GradientActivePalette = ({
 
             <input
               aria-label="color-opacity"
-              className="gradient-active-color__input border border-gray-200 dark:border-gray-700 dark:bg-dark-primary-base dark:bg-mix-dark-surface-base dark:bg-mix-amount-[95] bg-light-primary-base bg-mix-light-surface-base bg-mix-amount-[95] "
+              className="gradient-active-color__input !outline-none !shadow-none !ring-0 border border-gray-200 dark:border-gray-700 dark:bg-[var(--theme-surface-container-low)] bg-[var(--theme-surface-a10)] "
               value={colorOpacityInput}
               onChange={event => setColorOpacityInput(event.target.value)}
               onBlur={event => handleChangeColorOpacity(event.target.value)}

@@ -46,7 +46,7 @@ const GradientsShadesDetails = () => {
     return (
         <>
             <section className=" flex-grow flex flex-col ">
-                <div className='px-4 flex items-center py-2 border-t border-gray-200 dark:border-gray-700 transition duration-300 dark:bg-dark-primary-base dark:bg-mix-dark-surface-base dark:bg-mix-amount-[95] bg-light-primary-base bg-mix-light-surface-base bg-mix-amount-[95] header shadow is-sticky'>
+                <div className='px-4 flex items-center py-2 border-t border-gray-200 dark:border-gray-700 transition duration-300 bg-[var(--theme-surface-body-pane)] dark:bg-[var(--theme-surface-container)] header shadow is-sticky'>
                     <div className='divide-x divide-gray-200 dark:divide-gray-700 flex gap-2 items-center '>
                         <button
                             onClick={() => setSidebarOpen(!sidebarOpen)}
@@ -66,7 +66,7 @@ const GradientsShadesDetails = () => {
                             {data.map((items, index) => {
                                 return (
                                     <Fragment key={index}>
-                                        <button className="flex px-1.5 rounded py-1.5  bg-gray-200 items-center gap-1 ">
+                                        <button className="flex px-1.5 rounded py-1.5  bg-gray-200 items-center gap-1">
                                             <span className="w-3 border border-black h-3 block" style={{ background: items }}></span>
                                             <span className="text-sm hidden sm:block">{items}</span>
                                         </button>

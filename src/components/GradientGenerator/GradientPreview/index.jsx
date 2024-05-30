@@ -16,7 +16,7 @@ const GradientPreview = ({
   handleDeletePalette,
   handleColorPositionChange
 }) => (
-  <div className="gradient-preview pl-4  dark:bg-dark-primary-base dark:bg-mix-dark-surface-base dark-primary-base dark:bg-mix-amount-[90] bg-light-surface-base bg-mix-light-surface-base bg-mix-amount-[90] ">
+  <div className="gradient-preview md:col-span-2 md:!border-l-0 lg:!border-l md:!border-t lg:!border-t-0  md:mt-4 md:pt-4 lg:mt-0  lg:col-span-1 lg:pl-4 pt-6 lg:pt-0 dark:bg-dark-primary-base bg-[var(--theme-surface-body-pane)] dark:bg-[var(--theme-surface-container)] ">
     <div className="grid">
       {[...palettes]
         .sort((paletteA, paletteB) => paletteA.position - paletteB.position)
@@ -27,7 +27,7 @@ const GradientPreview = ({
           >
             <div
              className={classnames("flex items-center p-1 pr-2 rounded-md justify-between transition duration-700", {
-              "dark:bg-dark-primary-base dark:bg-mix-dark-surface-base dark:bg-mix-amount-[100] bg-light-primary-base bg-mix-light-surface-base bg-mix-amount-[92]": pallet.id === activePaletteId
+              "dark:bg-[var(--theme-surface-container-low)] bg-[var(--theme-surface-container)]": pallet.id === activePaletteId
             })}
             >
             <div
@@ -45,7 +45,7 @@ const GradientPreview = ({
             </div>
             <input
               aria-label="color-opacity"
-              className={`gradient-active-color__input border py-3 border-gray-200 dark:border-gray-700 ${pallet.id === activePaletteId ? 'dark:bg-dark-primary-base dark:bg-mix-dark-surface-base dark:bg-mix-amount-[95]' : 'dark:bg-dark-primary-base dark:bg-mix-dark-surface-base dark:bg-mix-amount-[95] bg-light-primary-base bg-mix-light-surface-base bg-mix-amount-[95]'}`}
+              className={`gradient-active-color__input border py-3 border-gray-200 dark:border-gray-700 ${pallet.id === activePaletteId ? 'dark:bg-[var(--theme-surface-container)]' : 'dark:bg-[var(--theme-surface-container)] bg-[var(--theme-surface-a10)]'}`}
               value={pallet.position}
               onChange={event => handleColorPositionChange(pallet.id, event.target.value)}
             />

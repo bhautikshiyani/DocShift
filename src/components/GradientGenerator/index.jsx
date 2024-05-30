@@ -114,7 +114,7 @@ const GradientGenerator = ({ addNewMessage }) => {
   return (
     <div>
       <GradientColors gradient={gradient}/>
-      <div className="gradient-generator mx-auto px-6 container md:mt-[-75px]">
+      <div className="gradient-generator mx-auto px-6 pb-6 container md:mt-[-75px]">
         <div className="gradient-generator__main grid">
           <div className="gradient-generator-settings">
             <m.div

@@ -36,7 +36,8 @@ export default {
   },
   plugins: [
     require('@tailwindcss/forms'),
-    colorMix(),
+    // colorMix(),
+
     require('@tailwindcss/aspect-ratio'),
   ],
 }

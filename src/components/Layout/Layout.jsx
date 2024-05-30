@@ -8,11 +8,11 @@ const Layout = () => {
     const isSwatchesDetail = matchPath("/swatches/:name", location.pathname) || matchPath("/gradient", location.pathname);
 
     return (
-        <div className="min-h-screen transition duration-300 dark:bg-dark-primary-base dark:bg-mix-dark-surface-base dark:bg-mix-amount-[95] bg-light-primary-base bg-mix-light-surface-base bg-mix-amount-[95] flex flex-col">
+        <div className="min-h-screen transition duration-300 bg-[var(--theme-background)] flex flex-col">
             <Header />
             {
                 isSwatchesDetail ?
-                    <main className="flex-grow flex">
+                    <main className="flex-grow flex min-h-[70vh]">
                         <Outlet />
                     </main>
                     :
@@ -20,7 +20,6 @@ const Layout = () => {
                         <Outlet />
                     </main>
             }
-           
             <Footer />
         </div>
     )
