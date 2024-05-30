@@ -151,7 +151,6 @@ const GenerateColorShadesJson = () => {
                             <CustomScrollbars
                                 autoHide={false}
                                 style={{ height: 70 }}
-
                             >
                                 <div className="flex">
                                     {shades.map((color, ind) => (

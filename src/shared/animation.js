@@ -1,6 +1,6 @@
 export const SectionAppearAnimation = {
-  initial: { scale: 0 },
-  animate: { scale: [0, 1.05, 1] },
+  initial: { opacity: 0 },
+  animate: { opacity: [0, 1.05, 1] },
   transition: (delay = 0) => ({
     delay,
     times: [0, 0.75, 1],

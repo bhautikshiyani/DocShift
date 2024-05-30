@@ -13,6 +13,7 @@ import Colours from '@pages/ColorShades/Colours';
 import GenerateColorShadesJson from "@pages/ColorShades/GenerateColorShadesJson";
 import PrivacyPolicy from "@pages/PrivacyPolicy";
 import Home from "./pages/Home";
+import CSSVariables from "./pages/CSSVariables";
 
 const App = () => {
 
@@ -24,6 +25,8 @@ const App = () => {
           <Route path="/"  element={<Home />} />
           <Route path="/gradient" element={<Gradient />} />
           <Route path="color-shades" element={<ColorShades />} />
+          <Route path="css-generator" element={<CSSVariables />} />
+
           <Route path='color-shades/generate' element={<GenerateCustomColorShades />} />
           <Route path='color-shades/generate/json' element={<GenerateColorShadesJson />} />
           <Route path='color-shades/generate/:id' element={<Colours />} />

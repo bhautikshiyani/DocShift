@@ -51,7 +51,7 @@ const Home = () => {
                     </div>
                 </div>
             </section>
-            <section className='container mt-4 grid gap-6'>
+            <section className='mt-4 grid gap-6'>
                 <div className='grid sm:grid-cols-2 gap-5 md:grid-cols-3'>
                     <div className='card p-0.5 card-home home-palette card-1-bg relative rounded-[12px] transition duration-300 '>
                         <div className='z-[2] relative flex flex-col items-center gap-3 rounded-[16px] hover:rounded-[12px] hover:shadow-none transition duration-300 bg-[var(--theme-surface-container)] p-4'>
@@ -75,7 +75,7 @@ const Home = () => {
                 <div className=' p-4 rounded-[12px] bg-[var(--theme-surface-body-pane)] dark:bg-[var(--theme-surface-container)] '>
                     <h2 className='font-bold text-black dark:text-white text-[20px]'>Tools</h2>
                     <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4'>
-                        <div className='flex items-start gap-4 rounded-[12px] p-5 bg-[var(--theme-surface-a10)] dark:bg-[var(--theme-surface-container-low)]'>
+                        <div  onClick={() => navigate('/css-generator')} className='flex items-start gap-4 rounded-[12px] p-5 bg-[var(--theme-surface-a10)] dark:bg-[var(--theme-surface-container-low)]'>
                             <div className='w-[45px] rounded text-[24px] flex items-center justify-center h-[45px] text-white bg-[linear-gradient(135deg,#4327f2,#2a11c5)]'>
                                 <HiCode />
                             </div>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ColourShades from "./ColourShades";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Values from "values.js";
 
 const Colours = () => {
