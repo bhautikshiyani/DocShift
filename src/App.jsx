@@ -26,7 +26,6 @@ const App = () => {
           <Route path="/gradient" element={<Gradient />} />
           <Route path="color-shades" element={<ColorShades />} />
           <Route path="css-generator" element={<CSSVariables />} />
-
           <Route path='color-shades/generate' element={<GenerateCustomColorShades />} />
           <Route path='color-shades/generate/json' element={<GenerateColorShadesJson />} />
           <Route path='color-shades/generate/:id' element={<Colours />} />

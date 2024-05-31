@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import CopyToClipboard from "react-copy-to-clipboard";
 
 const ShadesComponent = ({ shade }) => {
+	console.log("🚀 ~ ShadesComponent ~ shade:", shade.hex)
 	const [value, setValue] = useState(`#${shade.hex}`);
 
 	const onCopy = () => {

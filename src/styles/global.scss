@@ -353,8 +353,6 @@ table.table-pricing i:not(.material-icons-outlined) {
 .custom-layout .react-colorful {
   padding: 10px;
   border-radius: 12px;
-  background: #33333a;
-  box-shadow: 0 6px 12px #999;
 }
 
 .custom-layout .react-colorful__saturation {
@@ -377,4 +375,21 @@ table.table-pricing i:not(.material-icons-outlined) {
 .custom-layout .react-colorful__alpha-pointer {
   width: 16px;
   height: 16px;
+}
+
+
+.subtitle-1 {
+  font-family: "DM Sans", "Roboto", -apple-system, "Segoe UI", sans-serif;
+  font-weight: 400;
+  font-size: clamp(.8rem,calc(.31rem + 1.97vw),.9375rem);
+  font-size: var(--fs-sm-100);
+  letter-spacing: .15px;
+}
+
+.subtitle-2 {
+  font-family: "DM Sans", "Roboto", -apple-system, "Segoe UI", sans-serif;
+  font-weight: 400;
+  font-size: clamp(.7rem,calc(.32rem + 1.69vw),.8125rem);
+  font-size: var(--fs-sm-300);
+  letter-spacing: .1px;
 }

@@ -6,6 +6,7 @@ import Values from "values.js";
 const Colours = () => {
     const { id } = useParams();
     const [shades, setShades] = useState([]);
+    console.log("🚀 ~ Colours ~ shades:", shades)
     const [error, setError] = useState(false);
 
     useEffect(() => {
