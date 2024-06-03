@@ -13,6 +13,8 @@ import GenerateColorShadesJson from "@pages/ColorShades/GenerateColorShadesJson"
 import PrivacyPolicy from "@pages/PrivacyPolicy";
 import Home from "@pages/Home";
 import CSSVariables from "@pages/CSSVariables";
+import Convert from "@pages/Convert";
+import RGBtoHEX from "@pages/Convert/RGBtoHEX/RGBtoHEX";
 
 const App = () => {
 
@@ -22,11 +24,13 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route path="/" element={<Home />} />
-          <Route path="/gradient" element={<Gradient />} />
+          <Route path="gradient" element={<Gradient />} />
           <Route path="color-shades" element={<ColorShades />} />
           <Route path="css-generator" element={<CSSVariables />} />
           <Route path='color-shades/generate' element={<GenerateCustomeColorPalettes />} />
           <Route path='color-shades/generate/json' element={<GenerateColorShadesJson />} />
+          <Route path="convert" element={<Convert />} />
+          <Route path="convert/rgbtohex" element={<RGBtoHEX />} />
           <Route path="color-shades/:slug" element={<ColorShadesDetails />} />
           <Route path="swatches" element={<Swatches />} />
           <Route path="swatches/:name" element={<GradientsShadesDetails />} />
