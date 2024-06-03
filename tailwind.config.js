@@ -1,6 +1,5 @@
 /** @type {import('tailwindcss').Config} */
 const { blackA, mauve, violet } = require('@radix-ui/colors');
-const colorMix = require("tailwindcss-color-mix");
 export default {
   content: [
     "./index.html",
@@ -55,17 +54,15 @@ export default {
         },
       },
       animation: {
-        slideUpAndFade: 'slideUpAndFade 400ms cubic-bezier(0.16, 1, 0.3, 1)',
-        slideRightAndFade: 'slideRightAndFade 400ms cubic-bezier(0.16, 1, 0.3, 1)',
-        slideDownAndFade: 'slideDownAndFade 400ms cubic-bezier(0.16, 1, 0.3, 1)',
-        slideLeftAndFade: 'slideLeftAndFade 400ms cubic-bezier(0.16, 1, 0.3, 1)',
+        slideUpAndFade: 'slideUpAndFade 200ms cubic-bezier(0.16, 1, 0.3, 1)',
+        slideRightAndFade: 'slideRightAndFade 200ms cubic-bezier(0.16, 1, 0.3, 1)',
+        slideDownAndFade: 'slideDownAndFade 200ms cubic-bezier(0.16, 1, 0.3, 1)',
+        slideLeftAndFade: 'slideLeftAndFade 200ms cubic-bezier(0.16, 1, 0.3, 1)',
       },
     },
   },
   plugins: [
     require('@tailwindcss/forms'),
-    // colorMix(),
-
     require('@tailwindcss/aspect-ratio'),
   ],
 }

@@ -12,6 +12,8 @@ export default defineConfig({
       '@assets': path.resolve(__dirname, 'src/assets'),
       '@shared': path.resolve(__dirname, 'src/shared'),
       '@styles': path.resolve(__dirname, 'src/styles'),
+      '@hooks': path.resolve(__dirname, 'src/hooks'),
+      '@reducers': path.resolve(__dirname, 'src/reducers'),
     },
   },
   build: {

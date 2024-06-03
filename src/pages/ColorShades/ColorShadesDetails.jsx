@@ -1,5 +1,5 @@
 import React from 'react'
-import GradientGrid from '../../components/GridBox/GradientGrid'
+import GradientGrid from '@components/GridBox/GradientGrid'
 
 const colors = [
     { name: 'AliceBlue', colors: 'AliceBlue' },

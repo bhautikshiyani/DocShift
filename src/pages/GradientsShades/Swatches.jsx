@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import { motion as m } from "framer-motion";
 import GradientGrid from '@components/GridBox/GradientGrid';
 import gradientsData from "@assets/gradients.json";
 import Loader from '@components/Loader';
+import { SectionAppearAnimation } from "@shared/animation";
 function Swatches() {
     const [gradients, setGradients] = useState(gradientsData.gradients.slice(0, 12));
     const [hasMore, setHasMore] = useState(true);
@@ -20,7 +22,10 @@ function Swatches() {
         }, 1100);
     };
     return (
-        <section>
+        <m.section
+            initial={SectionAppearAnimation.initial}
+            animate={SectionAppearAnimation.animate}
+            transition={SectionAppearAnimation.transition(0.2)}>
             <div className="mb-8">
                 <h2 className="text-xl font-semibold text-gray-800 dark:text-white">Take a colorful stroll on Gradient Lane</h2>
                 <p className="text-gray-700 dark:text-gray-400">
@@ -35,7 +40,7 @@ function Swatches() {
             >
                 <GradientGrid colors={gradients} status={true} />
             </InfiniteScroll>
-        </section>
+        </m.section>
     )
 }
 export default Swatches

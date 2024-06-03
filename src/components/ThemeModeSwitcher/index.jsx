@@ -1,7 +1,6 @@
 import React from "react"
 import classnames from "classnames"
 import { ThemeMode } from "@shared/constants"
-
 import SunIcon from "@assets/svg/sun.svg?react"
 import MoonIcon from "@assets/svg/moon.svg?react"
 

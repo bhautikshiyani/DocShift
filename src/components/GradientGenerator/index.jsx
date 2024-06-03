@@ -11,7 +11,7 @@ import GradientCode from "./GradientCode";
 import "./GradientGenerator.scss";
 import GradientColors from "./GradientColors";
 
-const GradientGenerator = ({ addNewMessage }) => {
+const GradientGenerator = () => {
   const [gradient, setGradient] = useState("");
   const [palettes, setPalettes] = useState([]);
   const [activePalette, setActivePalette] = useState(null);
@@ -155,7 +155,7 @@ const GradientGenerator = ({ addNewMessage }) => {
         <GradientCode
           gradient={gradient}
           resetGradient={resetGradient}
-          addNewMessage={addNewMessage}
+         
         />
       </div>
     </div>

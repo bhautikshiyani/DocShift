@@ -53,7 +53,7 @@ const CSSVariables = () => {
     return (
         <div className='p-4 rounded-[12px] bg-[var(--theme-surface-body-pane)] dark:bg-[var(--theme-surface-container)]'>
             <div className='max-w-full mb-8 md:max-w-[50%]'>
-                <h1 className="text-fs-200">CSS / SCSS <span className="text-gradient orange">color variables</span> generator</h1>
+                <h1 className="text-fs-100 text-black dark:text-white">CSS / SCSS <span className="text-gradient text-fs-100 orange">color variables</span> generator</h1>
                 <p className="subtitle-1 text-balance max-w-[50ch] text-muted mb-3">
                     Generate your custom color variables with our easy-to-use CSS and SCSS
                     Variables Generator to easily create and manage your CSS and SCSS custom variables.
@@ -102,25 +102,22 @@ const CSSVariables = () => {
                 {shades.map((color, ind) => (
                     <div key={ind}>
                         <div
-                            className="h-[4.5rem] sm:h-[6rem] hover:sm:rounded-[30px] rounded-xl border hover:rounded-[20px] transition-all duration-500 flex items-center justify-center cursor-pointer"
+                            className="h-[4.5rem]  sm:h-[6rem] hover:sm:rounded-[30px] rounded-xl border dark:border-[var(--theme-surface-container)] border-[var(--theme-surface-body-pane)]  hover:rounded-[20px] transition-all duration-500 flex items-center justify-center cursor-pointer"
                             style={{ backgroundColor: `#${color.hex}` }}
                             onClick={copyColor(color)}
                         ></div>
-                        <p className="subtitle-1 font-medium mt-1 mb-0.5">
+                        <p className="subtitle-1  text-black dark:text-white font-medium mt-1 mb-0.5">
                             Primary - {ind === 0 ? 50 : ind * 100}
                         </p>
-                        <p className="subtitle-2 text-muted mb-0">
+                        <p className="subtitle-2 text-muted  mb-0">
                             {`#${color.hex}`}
                         </p>
                     </div>
                 ))}
             </div>
-            <h2 className="text-fs-400 font-bold mb-3"><i className="material-icons-outlined text-primary me-1 mb-1"></i>
+            <h2 className="text-fs-400 text-black dark:text-white font-bold mb-3"><i className="material-icons-outlined text-primary me-1 mb-1"></i>
                 Code
             </h2>
-            <div>
-
-            </div>
             <div>
                 <div className="code-block">
                     <div className="bg-[var(--theme-surface-container-high)] flex items-center justify-between p-3 rounded-t-[8px] ">
@@ -129,7 +126,7 @@ const CSSVariables = () => {
                                 onClick={() => setCode('css')}
                                 className={
                                     classNames(
-                                        "border transition-all duration-300 text-xs font-bold rounded-[10px] after:w-full after:absolute relative after:-bottom-[6px] after:left-0 after:right-0 after:h-0.5 after:bg-[#2965f1] p-[8px_1rem]",
+                                        "border transition-all duration-300 text-black dark:text-white text-xs font-bold rounded-[10px] after:w-full after:absolute relative after:-bottom-[6px] after:left-0 after:right-0 after:h-0.5 after:bg-[#2965f1] p-[8px_1rem]",
                                         code === "css" ? " px-[1.5rem] bg-[var(--theme-surface-container-low)] border-[var(--theme-surface-container-high)]" : ' border-[var(--theme-outline-button)]'
                                     )}
                             >
@@ -137,7 +134,7 @@ const CSSVariables = () => {
                             </button>
                             <button
                                 onClick={() => setCode('scss')}
-                                className={classNames("border transition-all duration-300 text-xs font-bold rounded-[10px] after:w-full after:absolute relative after:-bottom-[6px] after:left-0 after:right-0 after:h-0.5 after:bg-[#cc6699] p-[8px_1rem]", code === "scss" ? "px-[1.5rem] bg-[var(--theme-surface-container-low)] border-[var(--theme-surface-container-high)]" : ' border-[var(--theme-outline-button)]')}  >
+                                className={classNames("border transition-all text-black dark:text-white duration-300 text-xs font-bold rounded-[10px] after:w-full after:absolute relative after:-bottom-[6px] after:left-0 after:right-0 after:h-0.5 after:bg-[#cc6699] p-[8px_1rem]", code === "scss" ? "px-[1.5rem] bg-[var(--theme-surface-container-low)] border-[var(--theme-surface-container-high)]" : ' border-[var(--theme-outline-button)]')}  >
                                 SCSS
                             </button>
                         </div>
@@ -164,11 +161,11 @@ const CSSVariables = () => {
                     </div>
 
                     <div className="code-block-content relative p-3 bg-[var(--theme-surface-container-low)] rounded-b-[8px]">
-                        <div className='absolute top-[-5px] right-[-5px]'>
+                        <div className='absolute top-[10px] right-[10px]'>
 
-                        <div className={classNames("transition-all duration-300 text-sm font-bold rounded-[10px] after:w-full after:absolute relative after:-bottom-[6px] after:right-0 after:h-0.5", code === "scss" ? "after:bg-[#cc6699]" : 'after:bg-[#2965f1]')} >
-                            {code === "scss" ? 'scss' : 'css'}
-                        </div>
+                            <div className={classNames("transition-all text-black dark:text-white duration-300 text-sm font-bold rounded-[10px] after:w-full after:absolute relative after:-bottom-[6px] after:right-0 after:h-0.5", code === "scss" ? "after:bg-[#cc6699]" : 'after:bg-[#2965f1]')} >
+                                {code === "scss" ? 'scss' : 'css'}
+                            </div>
                         </div>
                         {
                             code === "scss" ?
@@ -189,17 +186,17 @@ const CSSVariables = () => {
 
                                         ))}
 
-                                        <div className="code-line">
+                                        <div className="text-black dark:text-white">
                                         </div>
-                                        <div className="code-line">
+                                        <div className="text-black dark:text-white">
                                             <span className="text-[var(--theme-code-comment)] text-xs italic">/** EXAMPLES */</span>
                                         </div>
-                                        <div className="code-line">
+                                        <div className="text-black dark:text-white">
                                             <span className="text-[var(--theme-code-property)] text-xs">color: </span>
                                             <span className="text-[var(--theme-code-scss-property)] text-xs">$primary-a50</span>
                                             ;
                                         </div>
-                                        <div className="code-line">
+                                        <div className="text-black dark:text-white">
                                             <span className="text-[var(--theme-code-property)] text-xs">background-color: </span>
                                             <span className="text-[var(--theme-code-scss-property)] text-xs">$primary-a90</span>
                                             ;
@@ -209,24 +206,24 @@ const CSSVariables = () => {
                                 :
                                 <pre>
                                     <code>
-                                        <div className="code-line">
+                                        <div className="text-black dark:text-white">
                                             <span className="text-[var(--theme-code-comment)] text-xs italic">/** CSS PRIMARY COLORS */</span>
                                         </div>
                                         {shades.map((color, ind) => (
-                                            <div className="code-line" key={ind}>
+                                            <div className="text-black dark:text-white" key={ind}>
                                                 <span className="text-[var(--theme-code-scss-property)] text-xs">--color-primary-{ind === 0 ? 50 : ind * 100}: </span>
                                                 <span className="text-[var(--theme-code-number)] text-xs">{`#${color.hex}`}</span>;
                                             </div>
                                         ))}
-                                        <div className="code-line">
+                                        <div className="text-black dark:text-white">
                                             <span className="text-[var(--theme-code-comment)] text-xs italic">/** EXAMPLES */</span>
                                         </div>
-                                        <div className="code-line">
+                                        <div className="text-black dark:text-white">
                                             <span className="text-[var(--theme-code-property)] text-xs">color: </span>
                                             <span className="text-[var(--theme-code-scss-property)] text-xs">var(--color-primary-50)</span>
                                             ;
                                         </div>
-                                        <div className="code-line">
+                                        <div className="text-black dark:text-white">
                                             <span className="text-[var(--theme-code-property)] text-xs">background-color: </span>
                                             <span className="text-[var(--theme-code-scss-property)] text-xs">var(--color-primary-900)</span>
                                             ;

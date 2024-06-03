@@ -1,6 +1,6 @@
 @use "abstracts" as *;
 @use "custom" as *;
-
+@forward 'toast';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

@@ -1,13 +1,13 @@
 import React, { useEffect, useState, useRef } from "react"
-import { motion as m, AnimatePresence } from "framer-motion"
+import { motion as m } from "framer-motion"
 import { HexColorPicker as Picker } from "react-colorful"
 import { allowOnlyNumbers, hexToRgbaObject, rgbaToHex } from "@shared/utils"
 import useOutsideClick from "@shared/hooks/useOutsideClick"
-import useWindowSize from "@shared/hooks/useWindowSize"
+
 import {
   defaultHexColor,
   hexColorRegExp,
-  smallBreakPoint
+
 } from "@shared/constants"
 
 import "./GradientActivePalette.scss"
@@ -15,7 +15,6 @@ import GradientPreview from "../GradientPreview"
 
 const GradientActivePalette = ({
   activePalette,
-  canDeletePalette,
   handleGradientColorChange,
   handleDeletePalette,
   gradient,
@@ -23,9 +22,8 @@ const GradientActivePalette = ({
   handleColorPositionChange,
   setActivePalette
 }) => {
-  const { width } = useWindowSize()
-  const isChangeSettingWidth =
-    width > parseInt(smallBreakPoint, 10) && !canDeletePalette
+
+ 
   const [hexColor, setHexColor] = useState(defaultHexColor)
   const [hexColorInput, setHexColorInput] = useState(defaultHexColor)
   const [rgbaObject, setRgbaObject] = useState({

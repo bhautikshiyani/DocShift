@@ -8,12 +8,11 @@ import ColorShadesDetails from '@pages/ColorShades/ColorShadesDetails';
 import Swatches from '@pages/GradientsShades/Swatches';
 import GradientsShadesDetails from '@pages/GradientsShades/GradientsShadesDetails';
 import { Tooltip } from 'react-tooltip';
-import GenerateCustomColorShades from '@pages/ColorShades/GenerateCustomColorShades';
-import Colours from '@pages/ColorShades/Colours';
+import GenerateCustomeColorPalettes from '@pages/ColorShades/GenerateCustomeColorPalettes';
 import GenerateColorShadesJson from "@pages/ColorShades/GenerateColorShadesJson";
 import PrivacyPolicy from "@pages/PrivacyPolicy";
-import Home from "./pages/Home";
-import CSSVariables from "./pages/CSSVariables";
+import Home from "@pages/Home";
+import CSSVariables from "@pages/CSSVariables";
 
 const App = () => {
 
@@ -22,13 +21,12 @@ const App = () => {
       <Tooltip style={{ fontSize: '12px', padding: '6px 10px', zIndex: '9999999999' }} id="my-tooltip" />
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route path="/"  element={<Home />} />
+          <Route path="/" element={<Home />} />
           <Route path="/gradient" element={<Gradient />} />
           <Route path="color-shades" element={<ColorShades />} />
           <Route path="css-generator" element={<CSSVariables />} />
-          <Route path='color-shades/generate' element={<GenerateCustomColorShades />} />
+          <Route path='color-shades/generate' element={<GenerateCustomeColorPalettes />} />
           <Route path='color-shades/generate/json' element={<GenerateColorShadesJson />} />
-          <Route path='color-shades/generate/:id' element={<Colours />} />
           <Route path="color-shades/:slug" element={<ColorShadesDetails />} />
           <Route path="swatches" element={<Swatches />} />
           <Route path="swatches/:name" element={<GradientsShadesDetails />} />

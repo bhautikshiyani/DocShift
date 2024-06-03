@@ -1,8 +1,6 @@
 import React from "react"
 import { motion as m } from "framer-motion"
 import { SectionAppearAnimation } from "@shared/animation"
-
-
 import "./GradientColors.scss"
 
 const GradientColors = ({

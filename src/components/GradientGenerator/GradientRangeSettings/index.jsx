@@ -1,7 +1,5 @@
 import React from "react"
-
 import SwapIcon from "@assets/svg/swap.svg?react"
-
 import MultiThumbSlider from "./MultiThumbSlider"
 import "./GradientSlider.scss"
 

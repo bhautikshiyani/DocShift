@@ -1,16 +1,17 @@
 import React, { useState, useRef, useEffect } from "react"
 import { motion as m } from "framer-motion"
-import { gradientCodeLineHeight, messageLifeTime } from "@shared/constants"
+import { gradientCodeLineHeight } from "@shared/constants"
 import { SectionAppearAnimation } from "@shared/animation"
 
 import "./GradientCode.scss"
+import { useToast } from "../../../hooks/useToast"
 
 const defaultLinesNumber = 6
 
-const GradientCode = ({ gradient, resetGradient, addNewMessage }) => {
+const GradientCode = ({ gradient, resetGradient }) => {
   const [linesNumber, setLinesNumber] = useState(defaultLinesNumber)
   const codeContainerRef = useRef(null)
-
+  const toast = useToast();
   const handleCalculateLinesNumber = () => {
     const codeHeight = codeContainerRef.current?.offsetHeight ?? 100
     const neededLinesNumber = Math.ceil(
@@ -38,10 +39,7 @@ const GradientCode = ({ gradient, resetGradient, addNewMessage }) => {
 
   const handleCopyGradientCode = () => {
     navigator.clipboard.writeText(`background: ${gradient};`)
-    addNewMessage({
-      text: "CSS code has been copied",
-      lifeTime: messageLifeTime
-    })
+    toast.success("CSS code has been copied");
   }
 
   return (
