@@ -7,8 +7,6 @@ const GenerateCustomeColorPalettes = () => {
     const [colour, setColour] = useState("#ff0000");
     const [shades, setShades] = useState([]);
   
-
-
     const fetchShades = (color) => {
         try {
             const shades = new Values(color).all(10);

@@ -5,6 +5,7 @@ import * as Tooltip from '@radix-ui/react-tooltip';
 import * as Slider from '@radix-ui/react-slider';
 import * as RadioGroup from '@radix-ui/react-radio-group';
 import { useToast } from '@hooks/useToast';
+import CustomTooltip from '../../components/CustomTooltip';
 
 const useClipboard = () => {
     const onCopy = (text) => {
@@ -42,8 +43,7 @@ const GenerateColorShadesJson = () => {
     const [amount, setAmount] = useState(10);
     const [shades, setShades] = useState([]);
     const [isTooltipVisible, setIsTooltipVisible] = useState(false);
-    const [tooltipContent, setTooltipContent] = useState('');
-    const [visibleTooltip, setVisibleTooltip] = useState(null);
+
     const [name, setName] = useState('New_Color');
     const [pug, setPug] = useState(60);
 
@@ -70,19 +70,7 @@ const GenerateColorShadesJson = () => {
         getShades(color, amount);
     }, [color, pug, amount]);
 
-    const handleMouseEnter = (color) => {
-        setTooltipContent(color);
-        setVisibleTooltip(color);
-    };
-
-    const handleMouseLeave = () => {
-        setVisibleTooltip(null);
-    };
-
-    const handleClick = (color) => {
-        onCopy(color);
-        setTooltipContent('Copied!');
-    };
+  
     return (
         <div>
             {/* <Head>
@@ -187,30 +175,23 @@ const GenerateColorShadesJson = () => {
                                 >
                                     <div className="flex">
                                         {shades.map((color, ind) => (
-                                            <Tooltip.Provider key={`${ind}-color-shade`}>
-                                                <Tooltip.Root open={visibleTooltip === color}>
-                                                    <Tooltip.Trigger asChild>
-                                                        <div
-                                                            className="min-w-16 min-h-16 flex items-center justify-center cursor-pointer"
-                                                            style={{ backgroundColor: color }}
-                                                            onMouseEnter={() => handleMouseEnter(color)}
-                                                            onMouseLeave={handleMouseLeave}
-                                                            onClick={() => handleClick(color)}
-                                                        >
-                                                            {ind === 0 ? 50 : ind * 100}
-                                                        </div>
-                                                    </Tooltip.Trigger>
-                                                    <Tooltip.Portal>
-                                                        <Tooltip.Content
-                                                            className="data-[state=delayed-open]:data-[side=top]:animate-slideDownAndFade data-[state=delayed-open]:data-[side=right]:animate-slideLeftAndFade data-[state=delayed-open]:data-[side=left]:animate-slideRightAndFade data-[state=delayed-open]:data-[side=bottom]:animate-slideUpAndFade text-violet11 select-none rounded-[4px] bg-white px-[15px] py-[10px] text-[15px] leading-none shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] will-change-[transform,opacity]"
-                                                            sideOffset={5}
-                                                        >
-                                                            {tooltipContent}
-                                                            <Tooltip.Arrow className="fill-white" />
-                                                        </Tooltip.Content>
-                                                    </Tooltip.Portal>
-                                                </Tooltip.Root>
-                                            </Tooltip.Provider>
+                                            <>
+
+                                                <CustomTooltip
+                                                    key={`${ind}-color-shade`}
+                                                    hexColor={color}
+                                                    onCopy={onCopy}
+                                                    contentClassName=" text-violet11 bg-white"
+                                                    arrowClassName="fill-white"
+                                                >
+                                                    <div
+                                                        className="min-w-16 min-h-16 flex items-center justify-center cursor-pointer"
+                                                        style={{ backgroundColor: color }}
+                                                    >
+                                                        {ind === 0 ? 50 : ind * 100}
+                                                    </div>
+                                                </CustomTooltip>
+                                            </>
                                         ))}
                                     </div>
                                 </CustomScrollbars>
@@ -260,7 +241,7 @@ const GenerateColorShadesJson = () => {
                             >
                                 Copy Color Palette JSON
                             </button>
-                            
+
                         </div>
                     </SectionBox>
                 </div>

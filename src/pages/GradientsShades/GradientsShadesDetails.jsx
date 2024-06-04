@@ -11,7 +11,6 @@ import { IoCodeSharp } from 'react-icons/io5';
 import ModalBox from '@components/Modal/ModalBox';
 import CustomScrollbars from '@shared/CustomScrollbars';
 
-
 const GradientsShadesDetails = () => {
     const location = useLocation();
     const navigate = useNavigate();

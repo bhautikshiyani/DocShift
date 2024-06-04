@@ -10,8 +10,6 @@ import classNames from 'classnames';
 const CSSVariables = () => {
     const [colour, setColour] = useState("#ff0000");
     const [shades, setShades] = useState([]);
-    const [error, setError] = useState(false);
-    const [colorCopied, setColorCopied] = useState(false);
     const [code, setCode] = useState('css');
 
     const [count, setCount] = useState(20);
@@ -33,9 +31,9 @@ const CSSVariables = () => {
         try {
             const shades = new Values(color).all(count);
             setShades(shades);
-            setError(false);
+
         } catch (err) {
-            setError(true);
+
         }
     };
     useEffect(() => {
@@ -44,10 +42,7 @@ const CSSVariables = () => {
 
     const copyColor = (color) => () => {
         navigator.clipboard.writeText(`#${color.hex}`);
-        setColorCopied(true);
-        setTimeout(() => {
-            setColorCopied(false);
-        }, 500);
+      
     };
 
     return (

@@ -3,9 +3,9 @@ import Wheel from '@uiw/react-color-wheel';
 import { rgbStringToHsva } from '@uiw/color-convert'
 import { LuCopy } from 'react-icons/lu'
 import { FaMinus, FaPlus } from 'react-icons/fa6';
-import CustomTooltip from '../../../components/CustomTooltip';
+import CustomTooltip from '@components/CustomTooltip';
 
-const RGBtoHEX = () => {
+const HEXtoRGB = () => {
     const [color, setColor] = useState("rgb(255, 255, 255)");
     const rgbtohsva = rgbStringToHsva(color)
     const parseRGB = (rgb) => {
@@ -52,11 +52,11 @@ const RGBtoHEX = () => {
                             <div>
                                 <label className='text-[12px]'>Red (min: 0, max: 255):</label>
                                 <div className='flex items-center'>
-                                    <button onClick={() => updateRGB('r', Math.max(rgb?.r - 1, 0))} className='dark:text-white w-[40px] outline-none ring-0 flex items-center justify-center text-[var(--theme-surface-a90)] text-[20px] transition-all duration-100 active:bg-[var(--theme-surface-a50)] active:text-black bg-[var(--theme-surface-container-high)] disabled:opacity-60 h-[40px] text-white'>
+                                    <button onClick={() => updateRGB('r', Math.max(rgb?.r - 1, 0))}  className=' dark:text-white   w-[40px] outline-none ring-0 flex items-center justify-center text-[var(--theme-surface-a90)] rounded-full text-[20px] transition-all duration-100 active:bg-[var(--theme-surface-a50)] active:text-black bg-[var(--theme-surface-container-high)] disabled:opacity-60 h-[40px] text-white'>
                                         <FaMinus />
                                     </button>
-                                    <input className='rounded min-w-sm max-w-sm gradient-active-color__input !outline-none !shadow-none !ring-0 border border-gray-200 dark:border-gray-700 bg-[var(--theme-surface-body-pane)] dark:bg-[var(--theme-surface-container)]' value={rgb?.r} onChange={(e) => updateRGB('r', Math.min(Math.max(parseInt(e.target.value), 0), 255))} step="1" max="255" min="0" type="number" autoComplete="off" tabIndex="0" />
-                                    <button onClick={() => updateRGB('r', Math.min(rgb?.r + 1, 255))} className='dark:text-white w-[40px] outline-none ring-0 flex items-center justify-center text-[var(--theme-surface-a90)] text-[20px] transition-all duration-100 active:bg-[var(--theme-surface-a50)] active:text-black bg-[var(--theme-surface-container-high)] disabled:opacity-60 h-[40px] text-white'>
+                                    <input className='rounded min-w-sm max-w-sm gradient-active-color__input !outline-none !shadow-none !ring-0 border border-gray-200 dark:border-gray-700 bg-[var(--theme-surface-body-pane)] dark:bg-[var(--theme-surface-container)] ' value={rgb?.r} onChange={(e) => updateRGB('r', Math.min(Math.max(parseInt(e.target.value), 0), 255))} step="1" max="255" min="0" type="number" autoComplete="off" tabIndex="0" />
+                                    <button onClick={() => updateRGB('r', Math.min(rgb?.r + 1, 255))} className=' dark:text-white   w-[40px] outline-none ring-0 flex items-center justify-center text-[var(--theme-surface-a90)] rounded-full text-[20px] transition-all duration-100 active:bg-[var(--theme-surface-a50)] active:text-black bg-[var(--theme-surface-container-high)] disabled:opacity-60 h-[40px] text-white'>
                                         <FaPlus />
                                     </button>
                                 </div>
@@ -66,7 +66,7 @@ const RGBtoHEX = () => {
                                 <div className='flex items-center'>
                                     <button
                                         onClick={() => updateRGB('g', Math.max(rgb?.g - 1, 0))}
-                                        className=' dark:text-white   w-[40px] outline-none ring-0 flex items-center justify-center text-[var(--theme-surface-a90)]  text-[20px] transition-all duration-100 active:bg-[var(--theme-surface-a50)] active:text-black bg-[var(--theme-surface-container-high)] disabled:opacity-60 h-[40px] text-white'>
+                                        className='w-[40px] flex items-center justify-center h-[40px] text-black dark:text-white'>
                                         <FaMinus />
                                     </button>
                                     <input
@@ -81,7 +81,7 @@ const RGBtoHEX = () => {
                                         tabIndex="0" />
                                     <button
                                         onClick={() => updateRGB('g', Math.min(rgb?.g + 1, 255))}
-                                        className=' dark:text-white w-[40px] outline-none ring-0 flex items-center justify-center text-[var(--theme-surface-a90)] text-[20px] transition-all duration-100 active:bg-[var(--theme-surface-a50)] active:text-black bg-[var(--theme-surface-container-high)] disabled:opacity-60 h-[40px] text-white'>
+                                        className='w-[40px] flex items-center justify-center h-[40px] text-black dark:text-white'>
                                         <FaPlus />
                                     </button>
                                 </div>
@@ -91,10 +91,10 @@ const RGBtoHEX = () => {
                                 <div className='flex items-center'>
                                     <button
                                         onClick={() => updateRGB('b', Math.max(rgb?.b - 1, 0))}
-                                        className='dark:text-white w-[40px] outline-none ring-0 flex items-center justify-center text-[var(--theme-surface-a90)] text-[20px] transition-all duration-100 active:bg-[var(--theme-surface-a50)] active:text-black bg-[var(--theme-surface-container-high)] disabled:opacity-60 h-[40px] text-white'>
+                                        className='w-[40px] flex items-center justify-center h-[40px] text-black dark:text-white'>
                                         <FaMinus />
                                     </button>
-                                    <input className='rounded min-w-sm max-w-sm gradient-active-color__input !outline-none !shadow-none !ring-0 border border-gray-200 dark:border-gray-700 bg-[var(--theme-surface-body-pane)] dark:bg-[var(--theme-surface-container)] '
+                                    <input className='rounded min-w-sm max-w-sm  gradient-active-color__input !outline-none !shadow-none !ring-0 border border-gray-200 dark:border-gray-700 bg-[var(--theme-surface-body-pane)] dark:bg-[var(--theme-surface-container)] '
                                         value={rgb?.b}
                                         onChange={(e) => updateRGB('b', Math.min(Math.max(parseInt(e.target.value), 0), 255))}
                                         step="1"
@@ -105,7 +105,7 @@ const RGBtoHEX = () => {
                                         tabIndex="0" />
                                     <button
                                         onClick={() => updateRGB('b', Math.min(rgb?.b + 1, 255))}
-                                        className='dark:text-white w-[40px] outline-none ring-0 flex items-center justify-center text-[var(--theme-surface-a90)] text-[20px] transition-all duration-100 active:bg-[var(--theme-surface-a50)] active:text-black bg-[var(--theme-surface-container-high)] disabled:opacity-60 h-[40px] text-white'>
+                                        className='w-[40px] flex items-center justify-center h-[40px] text-black dark:text-white'>
                                         <FaPlus />
                                     </button>
                                 </div>
@@ -137,4 +137,4 @@ const RGBtoHEX = () => {
     );
 }
 
-export default RGBtoHEX;
+export default HEXtoRGB;
