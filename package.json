@@ -23,6 +23,7 @@
     "@uiw/react-color-wheel": "^2.3.0",
     "axios": "^1.7.2",
     "classnames": "^2.5.1",
+    "color-convert": "^2.0.1",
     "framer-motion": "^11.2.6",
     "html2canvas": "^1.4.1",
     "path": "^0.12.7",
