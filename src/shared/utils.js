@@ -272,3 +272,57 @@ export function rgbTocmyk (r,g,b) {
  
   return [computedC,computedM,computedY,computedK];
 }
+
+
+export function parseRGB (color) {
+  if (Array.isArray(color)) {
+      return { r: color[0], g: color[1], b: color[2] };
+  } else if (typeof color === 'string') {
+      const result = /^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/.exec(color);
+      if (result) {
+          return {
+              r: parseInt(result[1], 10),
+              g: parseInt(result[2], 10),
+              b: parseInt(result[3], 10)
+          };
+      }
+  }
+  return null;
+};
+
+
+
+export function formatNumber  (num)  {
+  return num % 1 === 0 ? num.toFixed(0) : num.toFixed(2);
+};
+
+
+export const hslInput = [{
+  label: 'Hue',
+  max: '360',
+  symbol: '°'
+},
+{
+  label: 'Saturation',
+  max: '100',
+  symbol: '%'
+}, {
+  label: 'Lightness',
+  max: '100',
+  symbol: '%'
+},
+]
+
+
+export const rgbInputs = [{
+  label: 'Red',
+  max: '255',
+},
+{
+  label: 'Green',
+  max: '255',
+},
+{
+  label: 'Blue',
+  max: '255',
+}]

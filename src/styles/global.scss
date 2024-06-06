@@ -393,3 +393,12 @@ table.table-pricing i:not(.material-icons-outlined) {
   font-size: var(--fs-sm-300);
   letter-spacing: .1px;
 }
+
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}

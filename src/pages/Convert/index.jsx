@@ -1,8 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import convert from 'color-convert';
+import { color } from '@uiw/color-convert'
+
 const Convert = () => {
 
+    const { rgb, rgba, hsl, hsv, hsla, hsva ,  } = color('#d1021a');
+    console.log("🚀 ~ Convert ~ rgba:",rgb, rgba, hsl, hsv, hsla, hsva)
+   
 
     const rgbtohex = convert.rgb.hex(123, 45, 67);
     const rgbtohsl = convert.rgb.hsl(123, 45, 67);
