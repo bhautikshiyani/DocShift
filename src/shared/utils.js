@@ -313,6 +313,44 @@ export const hslInput = [{
 },
 ]
 
+export const cmykInput = [{
+  label: 'Cyan',
+  max: '100',
+  symbol: '%'
+},
+{
+  label: 'Magenta',
+  max: '100',
+  symbol: '%'
+}, {
+  label: 'Yellow',
+  max: '100',
+  symbol: '%'
+},
+{
+  label: 'Black',
+  max: '100',
+  symbol: '%'
+},
+]
+
+
+export const labInput = [{
+  label: 'Lightness',
+  max: '100',
+},
+{
+  label: 'a',
+  max: '127',
+  min:'-128'
+ 
+}, {
+  label: 'b',
+  max: '127',
+  min:'-128'
+},
+]
+
 
 export const rgbInputs = [{
   label: 'Red',

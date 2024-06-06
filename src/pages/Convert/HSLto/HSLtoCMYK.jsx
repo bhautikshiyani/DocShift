@@ -5,10 +5,9 @@ import convert from 'color-convert';
 import RGBInputs from '@components/Convert/RGBInputs';
 import ColorPreview from '@components/Convert/ColorPreview';
 import { formatNumber, hslInput } from '../../../shared/utils';
+import CMYKPreview from '../../../components/Convert/CMYKPreview';
 
-
-
-const HSLtoHEX = () => {
+const HSLtoCMYK = () => {
     const [color, setColor] = useState([0, 100, 14.70]);
     const updateRGB = (index, value) => {
         setColor(prevColor => {
@@ -19,8 +18,8 @@ const HSLtoHEX = () => {
     };
 
     const hsltorgb = convert.hsl.rgb(color);
-    const hsltohex = convert.hsl.hex(color);
 
+    const hsltocmyk = convert.hsl.cmyk(color);
     const handleSetColor = (e) => {
         setColor(e)
     }
@@ -29,7 +28,6 @@ const HSLtoHEX = () => {
             navigator.clipboard.writeText(text);
         }
     };
- 
     return (
         <div>
             <div className='grid grid-cols-2'>
@@ -84,28 +82,11 @@ const HSLtoHEX = () => {
                     <RGBInputs inputs={hslInput} color={color} setColor={handleSetColor} />
 
                 </div>
-                <div className="text-black dark:text-white">
-                    <div className='flex items-center gap-3'>
-                        <strong>{`#${hsltohex}`}</strong>
-                        <CustomTooltip
-                            hexColor={`#${hsltohex}`}
-                            onCopy={onCopy}
-                            contentClassName=" text-violet11 bg-white"
-                            arrowClassName="fill-white"
-                        >
-                            <LuCopy className='dark:text-white text-xl hover:dark:text-dark-primary-base text-gray-800' />
-                        </CustomTooltip>
-                    </div>
-                    <div className="color-converter__channels">
-                        <div className="color-converter__channel">Red: <strong>{hsltorgb[0]}</strong></div>
-                        <div className="color-converter__channel">Green: <strong>{hsltorgb[1]}</strong></div>
-                        <div className="color-converter__channel">Blue: <strong>{hsltorgb[2]}</strong></div>
-                    </div>
-                </div>
+                <CMYKPreview  cmykColor={hsltocmyk}/>
             </div>
             <ColorPreview rgbColor={hsltorgb} />
         </div>
     );
 }
 
-export default HSLtoHEX;
+export default HSLtoCMYK;

@@ -138,12 +138,12 @@ const RGBInputs = (props) => {
     };
 
     const renderInput = (input) => {
-        const { label, max, symbol } = input;
+        const { label, max, symbol , min } = input;
         const key = label.toLowerCase();
-
+        const minValue = min ? min : 0;
         return (
             <div key={key}>
-                <label className='text-[12px]'>{label} (min: 0, max: {max}){symbol ? ` (${symbol})` : ''}:</label>
+                <label className='text-[12px]'>{label} (min: {minValue}, max: {max}){symbol ? ` (${symbol})` : ''}:</label>
                 <div className='flex items-center'>
                     <button
                         onClick={() => updateColor(key, Math.max(color?.[key] - 1, 0))}
@@ -153,10 +153,10 @@ const RGBInputs = (props) => {
                     <input
                         className='rounded min-w-sm max-w-sm gradient-active-color__input !outline-none !shadow-none !ring-0 border border-gray-200 dark:border-gray-700 bg-[var(--theme-surface-body-pane)] dark:bg-[var(--theme-surface-container)]'
                         value={color?.[key]}
-                        onChange={(e) => updateColor(key, Math.min(Math.max(parseInt(e.target.value), 0), max))}
+                        onChange={(e) => updateColor(key, Math.min(Math.max(parseInt(e.target.value), minValue), max))}
                         step="1"
                         max={max}
-                        min="0"
+                        min={minValue}
                         type="number"
                         autoComplete="off"
                         tabIndex="0"

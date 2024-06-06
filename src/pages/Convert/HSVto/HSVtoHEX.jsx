@@ -8,7 +8,7 @@ import { formatNumber, hslInput } from '../../../shared/utils';
 
 
 
-const HSLtoHEX = () => {
+const HSVtoHEX = () => {
     const [color, setColor] = useState([0, 100, 14.70]);
     const updateRGB = (index, value) => {
         setColor(prevColor => {
@@ -17,9 +17,8 @@ const HSLtoHEX = () => {
             return newColor;
         });
     };
-
-    const hsltorgb = convert.hsl.rgb(color);
-    const hsltohex = convert.hsl.hex(color);
+    const hsvtorgb = convert.hsv.rgb(color);
+    const hsvtohex = convert.hsv.hex(color);
 
     const handleSetColor = (e) => {
         setColor(e)
@@ -36,7 +35,7 @@ const HSLtoHEX = () => {
                 <div className='text-white'>
                     <div>
                         <span>
-                            hsl{"("}
+                            hsv{"("}
                         </span>
                         <input
                             required
@@ -86,9 +85,9 @@ const HSLtoHEX = () => {
                 </div>
                 <div className="text-black dark:text-white">
                     <div className='flex items-center gap-3'>
-                        <strong>{`#${hsltohex}`}</strong>
+                        <strong>{`#${hsvtohex}`}</strong>
                         <CustomTooltip
-                            hexColor={`#${hsltohex}`}
+                            hexColor={`#${hsvtohex}`}
                             onCopy={onCopy}
                             contentClassName=" text-violet11 bg-white"
                             arrowClassName="fill-white"
@@ -97,15 +96,15 @@ const HSLtoHEX = () => {
                         </CustomTooltip>
                     </div>
                     <div className="color-converter__channels">
-                        <div className="color-converter__channel">Red: <strong>{hsltorgb[0]}</strong></div>
-                        <div className="color-converter__channel">Green: <strong>{hsltorgb[1]}</strong></div>
-                        <div className="color-converter__channel">Blue: <strong>{hsltorgb[2]}</strong></div>
+                        <div className="color-converter__channel">Red: <strong>{hsvtorgb[0]}</strong></div>
+                        <div className="color-converter__channel">Green: <strong>{hsvtorgb[1]}</strong></div>
+                        <div className="color-converter__channel">Blue: <strong>{hsvtorgb[2]}</strong></div>
                     </div>
                 </div>
             </div>
-            <ColorPreview rgbColor={hsltorgb} />
+            <ColorPreview rgbColor={hsvtorgb} />
         </div>
     );
 }
 
-export default HSLtoHEX;
+export default HSVtoHEX;

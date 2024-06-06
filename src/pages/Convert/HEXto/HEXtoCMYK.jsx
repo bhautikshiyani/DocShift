@@ -6,7 +6,7 @@ import RGBInputs from '@components/Convert/RGBInputs';
 import ColorPreview from '@components/Convert/ColorPreview';
 import { formatNumber, rgbInputs } from '../../../shared/utils';
 
-const HSLtoCMKK = () => {
+const HEXtoCMYK = () => {
     const [color, setColor] = useState('000000');
     const [rgbColor, setrgbColor] = useState([]);
     const rgbtocmyk = convert.rgb.cmyk.raw(color);
@@ -73,4 +73,4 @@ const HSLtoCMKK = () => {
     );
 }
 
-export default HSLtoCMKK;
+export default HEXtoCMYK;

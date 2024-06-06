@@ -4,54 +4,87 @@ import CustomTooltip from '@components/CustomTooltip';
 import convert from 'color-convert';
 import RGBInputs from '@components/Convert/RGBInputs';
 import ColorPreview from '@components/Convert/ColorPreview';
-import { rgbInputs } from '../../../shared/utils';
+import { formatNumber, hslInput } from '../../../shared/utils';
 
 const HSLtoRGB = () => {
-    const [color, setColor] = useState('000000');
-    const [rgbColor, setrgbColor] = useState([]);
+    const [color, setColor] = useState([0, 100, 14.70]);
+    const updateRGB = (index, value) => {
+        setColor(prevColor => {
+            const newColor = [...prevColor];
+            newColor[index] = value;
+            return newColor;
+        });
+    };
 
-    const handleSetHexColor = (e) => {
-        const hextorgb = convert.hex.rgb(color);
-        setrgbColor(hextorgb)
-    }
+    const hsltorgb = convert.hsl.rgb(color);
+
     const handleSetColor = (e) => {
-        const rgbtohex = convert.rgb.hex(e);
-        setColor(rgbtohex)
+        setColor(e)
     }
     const onCopy = (text) => {
         if (typeof window !== 'undefined') {
             navigator.clipboard.writeText(text);
         }
     };
-    const hextorgb = convert.hex.rgb(color);
-    useEffect(() => {
-        setrgbColor(hextorgb)
-    }, [color])
     return (
         <div>
             <div className='grid grid-cols-2'>
                 <div className='text-white'>
                     <div>
                         <span>
-                            hex code (#):
+                            hsl{"("}
                         </span>
                         <input
-                            type='text'
                             required
-                            placeholder='000000'
-                            value={color}
-                            onChange={(e) => { setColor(e.target.value), handleSetHexColor(e.target.value) }}
-                            className='rounded !min-w-lg !w-56 !max-w-lg gradient-active-color__input !outline-none placeholder:dark:!text-gray-500 placeholder:!text-gray-300 !shadow-none !ring-0 border border-gray-200 dark:border-gray-700 bg-[var(--theme-surface-body-pane)] dark:bg-[var(--theme-surface-container)] '
+                            value={formatNumber(color[0])}
+                            step="1"
+                            max="255"
+                            min="0"
+                            type="number"
+                            autoComplete="off"
+                            tabIndex="0"
+                            onChange={(e) => updateRGB(0, Math.min(Math.max(parseInt(e.target.value), 0), 360))}
+                            className=' py-0 px-1 text-center !outline-none w-[40px] !shadow-none !ring-0 border-0 dark:border-gray-700 bg-[var(--theme-surface-body-pane)] dark:bg-[var(--theme-surface-container)] '
                         />
+                        <span>deg</span>
+                        <input
+                            step="1"
+                            max="255"
+                            min="0"
+                            type="number"
+                            autoComplete="off"
+                            tabIndex="0"
+                            required
+                            value={formatNumber(color[1])}
+                            onChange={(e) => updateRGB(1, Math.min(Math.max(parseInt(e.target.value), 0), 100))}
+                            className='py-0 px-1  text-center !outline-none w-[40px] !shadow-none !ring-0 border-0 dark:border-gray-700 bg-[var(--theme-surface-body-pane)] dark:bg-[var(--theme-surface-container)] '
+                        />
+                        <span>% </span>
+                        <input
+                            step="1"
+                            max="255"
+                            min="0"
+                            type="number"
+                            autoComplete="off"
+                            tabIndex="0"
+                            required
+                            value={formatNumber(color[2])}
+                            onChange={(e) => updateRGB(2, Math.min(Math.max(parseInt(e.target.value), 0), 100))}
+                            className='py-0 px-1 text-center !outline-none w-[40px] !shadow-none !ring-0 border-0 dark:border-gray-700 bg-[var(--theme-surface-body-pane)] dark:bg-[var(--theme-surface-container)] '
+                        />
+                        <span>%
+                            {")"}
+                        </span>
                     </div>
 
-                    <RGBInputs inputs={rgbInputs} color={rgbColor} setColor={handleSetColor} />
+                    <RGBInputs inputs={hslInput} color={color} setColor={handleSetColor} />
+
                 </div>
                 <div className="text-black dark:text-white">
                     <div className='flex items-center gap-3'>
-                        <strong>{`rgb(${rgbColor})`}</strong>
+                        <strong>{`rgb(${hsltorgb})`}</strong>
                         <CustomTooltip
-                            hexColor={'Copy'}
+                            hexColor={`rgb(${hsltorgb})`}
                             onCopy={onCopy}
                             contentClassName=" text-violet11 bg-white"
                             arrowClassName="fill-white"
@@ -60,13 +93,13 @@ const HSLtoRGB = () => {
                         </CustomTooltip>
                     </div>
                     <div className="color-converter__channels">
-                        <div className="color-converter__channel">Red: <strong>{rgbColor[0]}</strong></div>
-                        <div className="color-converter__channel">Green: <strong>{rgbColor[1]}</strong></div>
-                        <div className="color-converter__channel">Blue: <strong>{rgbColor[2]}</strong></div>
+                        <div className="color-converter__channel">Red: <strong>{hsltorgb[0]}</strong></div>
+                        <div className="color-converter__channel">Green: <strong>{hsltorgb[1]}</strong></div>
+                        <div className="color-converter__channel">Blue: <strong>{hsltorgb[2]}</strong></div>
                     </div>
                 </div>
             </div>
-            <ColorPreview rgbColor={rgbColor} />
+            <ColorPreview rgbColor={hsltorgb} />
         </div>
     );
 }

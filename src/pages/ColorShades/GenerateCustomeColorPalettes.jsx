@@ -27,7 +27,7 @@ const GenerateCustomeColorPalettes = () => {
     return (
         <div className='p-4 rounded-[12px] bg-[var(--theme-surface-body-pane)] dark:bg-[var(--theme-surface-container)]'>
             <div className='max-w-full mb-8 md:max-w-[50%]'>
-                <h1 class="text-fs-100 text-black font-bold dark:text-white mb-7.5 text-left"><span class="text-orange-600">Effortlessly</span> create beautiful color palettes for your projects</h1>
+                <h1 className="text-fs-100 text-black font-bold dark:text-white mb-7.5 text-left"><span className="text-orange-600">Effortlessly</span> create beautiful color palettes for your projects</h1>
 
                 <p className="subtitle-1 text-balance max-w-[50ch] text-muted mb-3">
                     TintTastic is a user-friendly tint and shade generator that will elevate your color game in no time.

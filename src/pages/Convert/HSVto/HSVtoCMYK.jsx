@@ -6,9 +6,7 @@ import RGBInputs from '@components/Convert/RGBInputs';
 import ColorPreview from '@components/Convert/ColorPreview';
 import { formatNumber, hslInput } from '../../../shared/utils';
 
-
-
-const HSLtoHEX = () => {
+const HSVtoCMYK = () => {
     const [color, setColor] = useState([0, 100, 14.70]);
     const updateRGB = (index, value) => {
         setColor(prevColor => {
@@ -18,8 +16,8 @@ const HSLtoHEX = () => {
         });
     };
 
-    const hsltorgb = convert.hsl.rgb(color);
-    const hsltohex = convert.hsl.hex(color);
+    const hsvtorgb = convert.hsv.rgb(color);
+    const hsvtocmyk = convert.hsv.cmyk.raw(color);
 
     const handleSetColor = (e) => {
         setColor(e)
@@ -29,14 +27,13 @@ const HSLtoHEX = () => {
             navigator.clipboard.writeText(text);
         }
     };
- 
     return (
         <div>
             <div className='grid grid-cols-2'>
                 <div className='text-white'>
                     <div>
                         <span>
-                            hsl{"("}
+                            hsv{"("}
                         </span>
                         <input
                             required
@@ -86,26 +83,27 @@ const HSLtoHEX = () => {
                 </div>
                 <div className="text-black dark:text-white">
                     <div className='flex items-center gap-3'>
-                        <strong>{`#${hsltohex}`}</strong>
+                        <strong>{`cmyk(${formatNumber(hsvtocmyk[0])}%, ${formatNumber(hsvtocmyk[1])}%, ${formatNumber(hsvtocmyk[2])}%, ${formatNumber(hsvtocmyk[3])}%)`}</strong>
                         <CustomTooltip
-                            hexColor={`#${hsltohex}`}
+                            hexColor={`cmyk(${formatNumber(hsvtocmyk[0])}% ${formatNumber(hsvtocmyk[1])}%, ${formatNumber(hsvtocmyk[2])}%, ${formatNumber(hsvtocmyk[3])}%)`}
                             onCopy={onCopy}
-                            contentClassName=" text-violet11 bg-white"
+                            contentClassName="text-violet11 bg-white"
                             arrowClassName="fill-white"
                         >
                             <LuCopy className='dark:text-white text-xl hover:dark:text-dark-primary-base text-gray-800' />
                         </CustomTooltip>
                     </div>
                     <div className="color-converter__channels">
-                        <div className="color-converter__channel">Red: <strong>{hsltorgb[0]}</strong></div>
-                        <div className="color-converter__channel">Green: <strong>{hsltorgb[1]}</strong></div>
-                        <div className="color-converter__channel">Blue: <strong>{hsltorgb[2]}</strong></div>
+                        <div className="color-converter__channel">Cyan: <strong>{formatNumber(hsvtocmyk[0])} %</strong></div>
+                        <div className="color-converter__channel">Magenta: <strong>{formatNumber(hsvtocmyk[1])} %</strong></div>
+                        <div className="color-converter__channel">Yellow: <strong>{formatNumber(hsvtocmyk[2])} %</strong></div>
+                        <div className="color-converter__channel">Black: <strong>{formatNumber(hsvtocmyk[3])} %</strong></div>
                     </div>
                 </div>
             </div>
-            <ColorPreview rgbColor={hsltorgb} />
+            <ColorPreview rgbColor={hsvtorgb} />
         </div>
     );
 }
 
-export default HSLtoHEX;
+export default HSVtoCMYK;
