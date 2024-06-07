@@ -13,7 +13,7 @@ const HSLInput = (props) => {
         <div className='text-white'>
             <div>
                 <span>hsl{"("}</span>
-                {props.color.map((col, index) => (
+                {props?.color?.map((col, index) => (
                     <span key={index}>
                         <input
                             required

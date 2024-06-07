@@ -1,18 +1,26 @@
-import React from 'react'
+// File: HexPreview.js
+import React from 'react';
 import convert from 'color-convert';
 import CustomTooltip from '@components/CustomTooltip';
 import { LuCopy } from 'react-icons/lu';
 import { onCopy } from '@shared/utils';
 
 const HexPreview = (props) => {
-    const hextorgb = convert.hex.rgb(props.hexColor);
+    const { hexColor } = props;
+    console.log("🚀 ~ HexPreview ~ hexColor:", hexColor)
+    let hextorgb = [0, 0, 0];
 
+    if (hexColor && hexColor.length === 6) {
+        hextorgb = convert.hex.rgb(hexColor);
+    } else {
+        console.error('Invalid hex color value:', hexColor);
+    }
     return (
         <div className="text-black dark:text-white">
             <div className='flex items-center gap-3'>
-                <strong>{`#${props.hexColor}`}</strong>
+                <strong>{`#${hexColor}`}</strong>
                 <CustomTooltip
-                    hexColor={`#${props.hexColor}`}
+                    hexColor={`#${hexColor}`}
                     onCopy={onCopy}
                     contentClassName=" text-violet11 bg-white"
                     arrowClassName="fill-white"
@@ -26,7 +34,7 @@ const HexPreview = (props) => {
                 <div className="color-converter__channel">Blue: <strong>{hextorgb[2]}</strong></div>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default HexPreview
+export default HexPreview;
