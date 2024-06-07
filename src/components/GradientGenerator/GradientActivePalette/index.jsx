@@ -171,7 +171,6 @@ const GradientActivePalette = ({
           palettes={palettes}
           handleColorPositionChange={handleColorPositionChange}
           activePaletteId={activePalette?.id}
-        
           setActivePalette={setActivePalette}
           handleDeletePalette={handleDeletePalette}
         />

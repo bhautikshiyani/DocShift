@@ -1,6 +1,6 @@
 // import React, { useEffect, useState } from 'react'
 // import { FaMinus, FaPlus } from 'react-icons/fa6';
-// import { parseRGB } from '../../shared/utils';
+// import { parseRGB } from '@shared/utils';
 
 // const RGBInputs = (props) => {
 

@@ -155,7 +155,6 @@ const GradientGenerator = () => {
         <GradientCode
           gradient={gradient}
           resetGradient={resetGradient}
-         
         />
       </div>
     </div>

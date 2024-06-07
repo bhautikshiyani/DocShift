@@ -291,11 +291,19 @@ export function parseRGB (color) {
 };
 
 
-
-export function formatNumber  (num)  {
+export function formatNumber(num) {
+  if (typeof num !== 'number' || isNaN(num)) {
+      return '0'; // or any default value you deem appropriate
+  }
   return num % 1 === 0 ? num.toFixed(0) : num.toFixed(2);
-};
+}
 
+
+export function onCopy (text)  {
+  if (typeof window !== 'undefined') {
+      navigator.clipboard.writeText(text);
+  }
+};
 
 export const hslInput = [{
   label: 'Hue',
@@ -364,3 +372,19 @@ export const rgbInputs = [{
   label: 'Blue',
   max: '255',
 }]
+
+export const hsvInput = [{
+  label: 'Hue',
+  max: '360',
+  symbol: '°'
+},
+{
+  label: 'Saturation',
+  max: '100',
+  symbol: '%'
+}, {
+  label: 'Value',
+  max: '100',
+  symbol: '%'
+},
+]

@@ -1,13 +1,10 @@
 import React from 'react'
-import { formatNumber } from '../../shared/utils'
+import { formatNumber } from '@shared/utils'
 import CustomTooltip from '@components/CustomTooltip';
 import { LuCopy } from 'react-icons/lu';
+import { onCopy } from '@shared/utils';
 const CMYKPreview = (props) => {
-    const onCopy = (text) => {
-        if (typeof window !== 'undefined') {
-            navigator.clipboard.writeText(text);
-        }
-    };
+ 
     return (
         <div className="text-black dark:text-white">
             <div className='flex items-center gap-3'>

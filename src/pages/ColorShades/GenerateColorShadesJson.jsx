@@ -6,15 +6,7 @@ import * as Slider from '@radix-ui/react-slider';
 import * as RadioGroup from '@radix-ui/react-radio-group';
 import { useToast } from '@hooks/useToast';
 import CustomTooltip from '../../components/CustomTooltip';
-
-const useClipboard = () => {
-    const onCopy = (text) => {
-        if (typeof window !== 'undefined') {
-            navigator.clipboard.writeText(text);
-        }
-    };
-    return { onCopy };
-};
+import { onCopy } from '../../shared/utils';
 
 const ColorInput = (props) => {
     return (
@@ -51,7 +43,6 @@ const GenerateColorShadesJson = () => {
         setShades(colorShades(color, amount, pug));
     };
     const toast = useToast();
-    const { onCopy } = useClipboard();
     const copyToClipboard = () => {
         let colorObj = {};
         if (configType === 'flattened') {
