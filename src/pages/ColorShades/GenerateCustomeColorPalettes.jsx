@@ -11,7 +11,6 @@ const GenerateCustomeColorPalettes = () => {
         try {
             const shades = new Values(color).all(10);
             setShades(shades);
-
         } catch (err) {
      
         }
@@ -28,7 +27,6 @@ const GenerateCustomeColorPalettes = () => {
         <div className='p-4 rounded-[12px] bg-[var(--theme-surface-body-pane)] dark:bg-[var(--theme-surface-container)]'>
             <div className='max-w-full mb-8 md:max-w-[50%]'>
                 <h1 className="text-fs-100 text-black font-bold dark:text-white mb-7.5 text-left"><span className="text-orange-600">Effortlessly</span> create beautiful color palettes for your projects</h1>
-
                 <p className="subtitle-1 text-balance max-w-[50ch] text-muted mb-3">
                     TintTastic is a user-friendly tint and shade generator that will elevate your color game in no time.
                 </p>
@@ -63,7 +61,6 @@ const GenerateCustomeColorPalettes = () => {
             </div>
             <div className='flex justify-between mb-5'>
                 <h1 className='text-fs-400 font-bold text-black dark:text-white mb-0'>Color Tone</h1>
-                
             </div>
             <div className="grid grid-cols-2 lg:grid-cols-6 gap-3">
                 {shades.map((color, ind) => (
@@ -82,7 +79,6 @@ const GenerateCustomeColorPalettes = () => {
                     </div>
                 ))}
             </div>
-          
         </div>
     );
 };

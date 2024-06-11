@@ -83,223 +83,283 @@ const ConvertColor = () => {
       case 'hextorgb':
         return (
           <div>
-            <HexInput color={hexColor} setColor={setHexColor} setRgbColor={setRgbColor} rgbColor={rgbColor} />
-            <RGBPreview RGBColor={rgbColor} />
+            <div className='grid grid-cols-2'>
+              <HexInput color={hexColor} setColor={setHexColor} setRgbColor={setRgbColor} rgbColor={rgbColor} />
+              <RGBPreview RGBColor={rgbColor} />
+            </div>
+            <ColorPreview rgbColor={rgbColor} />
           </div>
         );
       case 'hextohsl':
         return (
           <div>
-            <HexInput color={hexColor} setColor={setHexColor} setRgbColor={setRgbColor} rgbColor={rgbColor} />
-            <HSLPreview hslColor={convertColors(rgbColor, 'rgb').hsl} />
+            <div className='grid grid-cols-2'>
+              <HexInput color={hexColor} setColor={setHexColor} setRgbColor={setRgbColor} rgbColor={rgbColor} />
+              <HSLPreview hslColor={convertColors(rgbColor, 'rgb').hsl} />
+            </div>
+            <ColorPreview rgbColor={rgbColor} />
+
           </div>
         );
       case 'hextocmyk':
         return (
           <div>
-            <HexInput color={hexColor} setColor={setHexColor} setRgbColor={setRgbColor} rgbColor={rgbColor} />
-            <CMYKPreview cmykColor={convertColors(rgbColor, 'rgb').cmyk} />
+            <div className='grid grid-cols-2'>
+              <HexInput color={hexColor} setColor={setHexColor} setRgbColor={setRgbColor} rgbColor={rgbColor} />
+              <CMYKPreview cmykColor={convertColors(rgbColor, 'rgb').cmyk} />
+            </div>
             <ColorPreview rgbColor={rgbColor} />
           </div>
         );
       case 'hextohsv':
         return (
           <div>
-            <HexInput color={hexColor} setColor={setHexColor} setRgbColor={setRgbColor} rgbColor={rgbColor} />
-            <HSVPreview hsvColor={convertColors(rgbColor, 'rgb').hsv} />
+            <div className='grid grid-cols-2'>
+              <HexInput color={hexColor} setColor={setHexColor} setRgbColor={setRgbColor} rgbColor={rgbColor} />
+              <HSVPreview hsvColor={convertColors(rgbColor, 'rgb').hsv} />
+            </div>
             <ColorPreview rgbColor={rgbColor} />
           </div>
         );
       case 'hextolab':
         return (
           <div>
-            <HexInput color={hexColor} setColor={setHexColor} setRgbColor={setRgbColor} rgbColor={rgbColor} />
-            <LABPreview labColor={convertColors(rgbColor, 'rgb').lab} />
+            <div className='grid grid-cols-2'>
+              <HexInput color={hexColor} setColor={setHexColor} setRgbColor={setRgbColor} rgbColor={rgbColor} />
+              <LABPreview labColor={convertColors(rgbColor, 'rgb').lab} />
+
+            </div>
             <ColorPreview rgbColor={rgbColor} />
           </div>
         );
       case 'rgbtohex':
         return (
           <div>
-            <RGBInput color={rgbColor} setColor={setRgbColor} />
-            <HexPreview hexColor={convertColors(rgbColor, 'rgb').hex} />
+            <div className='grid grid-cols-2'>
+              <RGBInput color={rgbColor} setColor={setRgbColor} />
+              <HexPreview hexColor={convertColors(rgbColor, 'rgb').hex} />
+            </div>
             <ColorPreview rgbColor={rgbColor} />
           </div>
         );
       case 'rgbtohsl':
         return (
           <div>
-            <RGBInput color={rgbColor} setColor={setRgbColor} />
-            <HSLPreview hslColor={convertColors(rgbColor, 'rgb').hsl} />
+            <div className='grid grid-cols-2'>
+              <RGBInput color={rgbColor} setColor={setRgbColor} />
+              <HSLPreview hslColor={convertColors(rgbColor, 'rgb').hsl} />
+            </div>
             <ColorPreview rgbColor={rgbColor} />
           </div>
         );
       case 'rgbtocmyk':
         return (
           <div>
-            <RGBInput color={rgbColor} setColor={setRgbColor} />
-            <CMYKPreview cmykColor={convertColors(rgbColor, 'rgb').cmyk} />
+            <div className='grid grid-cols-2'>
+              <RGBInput color={rgbColor} setColor={setRgbColor} />
+              <CMYKPreview cmykColor={convertColors(rgbColor, 'rgb').cmyk} />
+            </div>
             <ColorPreview rgbColor={rgbColor} />
           </div>
         );
       case 'rgbtohsv':
         return (
           <div>
-            <RGBInput color={rgbColor} setColor={setRgbColor} />
-            <HSVPreview hsvColor={convertColors(rgbColor, 'rgb').hsv} />
+            <div className='grid grid-cols-2'>
+              <RGBInput color={rgbColor} setColor={setRgbColor} />
+              <HSVPreview hsvColor={convertColors(rgbColor, 'rgb').hsv} />
+            </div>
             <ColorPreview rgbColor={rgbColor} />
           </div>
         );
       case 'rgbtolab':
         return (
           <div>
-            <RGBInput color={rgbColor} setColor={setRgbColor} />
-            <LABPreview labColor={convertColors(rgbColor, 'rgb').lab} />
+            <div className='grid grid-cols-2'>
+              <RGBInput color={rgbColor} setColor={setRgbColor} />
+              <LABPreview labColor={convertColors(rgbColor, 'rgb').lab} />
+            </div>
             <ColorPreview rgbColor={rgbColor} />
           </div>
         );
       case 'hsltohex':
         return (
           <div>
-            <HSLInput color={hslColor} setColor={setHslColor} />
-            <HexPreview hexColor={convertColors(hslColor, 'hsl').hex} />
+            <div className='grid grid-cols-2'>
+              <HSLInput color={hslColor} setColor={setHslColor} />
+              <HexPreview hexColor={convertColors(hslColor, 'hsl').hex} />
+            </div>
             <ColorPreview rgbColor={convertColors(hslColor, 'hsl').rgb} />
           </div>
         );
       case 'hsltorgb':
         return (
           <div>
-            <HSLInput color={hslColor} setColor={setHslColor} />
-            <RGBPreview RGBColor={convertColors(hslColor, 'hsl').rgb} />
+            <div className='grid grid-cols-2'>
+              <HSLInput color={hslColor} setColor={setHslColor} />
+              <RGBPreview RGBColor={convertColors(hslColor, 'hsl').rgb} />
+            </div>
             <ColorPreview rgbColor={convertColors(hslColor, 'hsl').rgb} />
           </div>
         );
       case 'hsltocmyk':
         return (
           <div>
-            <HSLInput color={hslColor} setColor={setHslColor} />
-            <CMYKPreview cmykColor={convertColors(hslColor, 'hsl').cmyk} />
+            <div className='grid grid-cols-2'>
+              <HSLInput color={hslColor} setColor={setHslColor} />
+              <CMYKPreview cmykColor={convertColors(hslColor, 'hsl').cmyk} />
+            </div>
             <ColorPreview rgbColor={convertColors(hslColor, 'hsl').rgb} />
           </div>
         );
       case 'hsltohsv':
         return (
           <div>
-            <HSLInput color={hslColor} setColor={setHslColor} />
-            <HSVPreview hsvColor={convertColors(hslColor, 'hsl').hsv} />
+            <div className='grid grid-cols-2'>
+              <HSLInput color={hslColor} setColor={setHslColor} />
+              <HSVPreview hsvColor={convertColors(hslColor, 'hsl').hsv} />
+            </div>
             <ColorPreview rgbColor={convertColors(hslColor, 'hsl').rgb} />
           </div>
         );
       case 'hsltolab':
         return (
           <div>
-            <HSLInput color={hslColor} setColor={setHslColor} />
-            <LABPreview labColor={convertColors(hslColor, 'hsl').lab} />
+            <div className='grid grid-cols-2'>
+              <HSLInput color={hslColor} setColor={setHslColor} />
+              <LABPreview labColor={convertColors(hslColor, 'hsl').lab} />
+            </div>
             <ColorPreview rgbColor={convertColors(hslColor, 'hsl').rgb} />
           </div>
         );
       case 'hsvtohex':
         return (
           <div>
-            <HSVInput color={hsvColor} setColor={setHsvColor} />
-            <HexPreview hexColor={convertColors(hsvColor, 'hsv').hex} />
+            <div className='grid grid-cols-2'>
+              <HSVInput color={hsvColor} setColor={setHsvColor} />
+              <HexPreview hexColor={convertColors(hsvColor, 'hsv').hex} />
+            </div>
             <ColorPreview rgbColor={convertColors(hsvColor, 'hsv').rgb} />
           </div>
         );
       case 'hsvtorgb':
         return (
           <div>
-            <HSVInput color={hsvColor} setColor={setHsvColor} />
-            <RGBPreview RGBColor={convertColors(hsvColor, 'hsv').rgb} />
-
+            <div className='grid grid-cols-2'>
+              <HSVInput color={hsvColor} setColor={setHsvColor} />
+              <RGBPreview RGBColor={convertColors(hsvColor, 'hsv').rgb} />
+            </div>
             <ColorPreview rgbColor={convertColors(hsvColor, 'hsv').rgb} />
           </div>
         );
       case 'hsvtocmyk':
         return (
           <div>
-            <HSVInput color={hsvColor} setColor={setHsvColor} />
-            <CMYKPreview cmykColor={convertColors(hsvColor, 'hsv').cmyk} />
+            <div className='grid grid-cols-2'>
+              <HSVInput color={hsvColor} setColor={setHsvColor} />
+              <CMYKPreview cmykColor={convertColors(hsvColor, 'hsv').cmyk} />
+
+            </div>
             <ColorPreview rgbColor={convertColors(hsvColor, 'hsv').rgb} />
           </div>
         );
       case 'hsvtohsl':
         return (
           <div>
-            <HSVInput color={hsvColor} setColor={setHsvColor} />
-            <HSLPreview hslColor={convertColors(hsvColor, 'hsv').hsl} />
+            <div className='grid grid-cols-2'>
+              <HSVInput color={hsvColor} setColor={setHsvColor} />
+              <HSLPreview hslColor={convertColors(hsvColor, 'hsv').hsl} />
+            </div>
             <ColorPreview rgbColor={convertColors(hsvColor, 'hsv').rgb} />
           </div>
         );
       case 'hsvtolab':
         return (
           <div>
-            <HSVInput color={hsvColor} setColor={setHsvColor} />
-            <LABPreview labColor={convertColors(hsvColor, 'hsv').lab} />
+            <div className='grid grid-cols-2'>
+              <HSVInput color={hsvColor} setColor={setHsvColor} />
+              <LABPreview labColor={convertColors(hsvColor, 'hsv').lab} />
+            </div>
             <ColorPreview rgbColor={convertColors(hsvColor, 'hsv').rgb} />
           </div>
         );
       case 'labtohex':
         return (
           <div>
-            <LABInput color={labColor} setColor={setLabColor} />
-            <HexPreview hexColor={convertColors(labColor, 'lab').hex} />
+            <div className='grid grid-cols-2'>
+              <LABInput color={labColor} setColor={setLabColor} />
+              <HexPreview hexColor={convertColors(labColor, 'lab').hex} />
+            </div>
             <ColorPreview rgbColor={convertColors(labColor, 'lab').rgb} />
           </div>
         );
       case 'labtorgb':
         return (
           <div>
-            <LABInput color={labColor} setColor={setLabColor} />
-            <RGBPreview RGBColor={convertColors(labColor, 'lab').rgb} />
+            <div className='grid grid-cols-2'>
+              <LABInput color={labColor} setColor={setLabColor} />
+              <RGBPreview RGBColor={convertColors(labColor, 'lab').rgb} />
+            </div>
             <ColorPreview rgbColor={convertColors(labColor, 'lab').rgb} />
           </div>
         );
       case 'labtocmyk':
         return (
           <div>
-            <LABInput color={labColor} setColor={setLabColor} />
-            <CMYKPreview cmykColor={convertColors(labColor, 'lab').cmyk} />
+            <div className='grid grid-cols-2'>
+              <LABInput color={labColor} setColor={setLabColor} />
+              <CMYKPreview cmykColor={convertColors(labColor, 'lab').cmyk} />
+            </div>
             <ColorPreview rgbColor={convertColors(labColor, 'lab').rgb} />
           </div>
         );
       case 'labtohsl':
         return (
           <div>
-            <LABInput color={labColor} setColor={setLabColor} />
-            <HSLPreview hslColor={convertColors(labColor, 'lab').hsl} />
+            <div className='grid grid-cols-2'>
+              <LABInput color={labColor} setColor={setLabColor} />
+              <HSLPreview hslColor={convertColors(labColor, 'lab').hsl} />
+            </div>
             <ColorPreview rgbColor={convertColors(labColor, 'lab').rgb} />
           </div>
         );
       case 'labtohsv':
         return (
           <div>
-            <LABInput color={labColor} setColor={setLabColor} />
-            <HSVPreview hsvColor={convertColors(labColor, 'lab').hsv} />
+            <div className='grid grid-cols-2'>
+              <LABInput color={labColor} setColor={setLabColor} />
+              <HSVPreview hsvColor={convertColors(labColor, 'lab').hsv} />
+            </div>
             <ColorPreview rgbColor={convertColors(labColor, 'lab').rgb} />
           </div>
         );
       case 'cmyktohex':
         return (
           <div>
-            <CMYKInput color={cmykColor} setColor={setCmykColor} />
-            <HexPreview hexColor={convertColors(cmykColor, 'cmyk').hex} />
+            <div className='grid grid-cols-2'>
+              <CMYKInput color={cmykColor} setColor={setCmykColor} />
+              <HexPreview hexColor={convertColors(cmykColor, 'cmyk').hex} />
+            </div>
             <ColorPreview rgbColor={convertColors(cmykColor, 'cmyk').rgb} />
           </div>
         );
       case 'cmyktorgb':
         return (
           <div>
-            <CMYKInput color={cmykColor} setColor={setCmykColor} />
-            <RGBPreview RGBColor={convertColors(cmykColor, 'cmyk').rgb} />
+            <div className='grid grid-cols-2'>
+              <CMYKInput color={cmykColor} setColor={setCmykColor} />
+              <RGBPreview RGBColor={convertColors(cmykColor, 'cmyk').rgb} />
+            </div>
             <ColorPreview rgbColor={convertColors(cmykColor, 'cmyk').rgb} />
           </div>
         );
       case 'cmyktohsl':
         return (
           <div>
-            <CMYKInput color={cmykColor} setColor={setCmykColor} />
-            <HSLPreview hslColor={convertColors(cmykColor, 'cmyk').hsl} />
+            <div className='grid grid-cols-2'>
+              <CMYKInput color={cmykColor} setColor={setCmykColor} />
+              <HSLPreview hslColor={convertColors(cmykColor, 'cmyk').hsl} />
+            </div>
             <ColorPreview rgbColor={convertColors(cmykColor, 'cmyk').rgb} />
 
           </div>
@@ -307,19 +367,21 @@ const ConvertColor = () => {
       case 'cmyktohsv':
         return (
           <div>
-            <CMYKInput color={cmykColor} setColor={setCmykColor} />
-            <HSVPreview hsvColor={convertColors(cmykColor, 'cmyk').hsv} />
+            <div className='grid grid-cols-2'>
+              <CMYKInput color={cmykColor} setColor={setCmykColor} />
+              <HSVPreview hsvColor={convertColors(cmykColor, 'cmyk').hsv} />
+            </div>
             <ColorPreview rgbColor={convertColors(cmykColor, 'cmyk').rgb} />
-
           </div>
         );
       case 'cmyktolab':
         return (
           <div>
-            <CMYKInput color={cmykColor} setColor={setCmykColor} />
-            <LABPreview labColor={convertColors(cmykColor, 'cmyk').lab} />
+            <div className='grid grid-cols-2'>
+              <CMYKInput color={cmykColor} setColor={setCmykColor} />
+              <LABPreview labColor={convertColors(cmykColor, 'cmyk').lab} />
+            </div>
             <ColorPreview rgbColor={convertColors(cmykColor, 'cmyk').rgb} />
-
           </div>
         );
       default:

@@ -1336,5 +1336,31 @@
       "name": "Grade Grey",
       "colors": ["#bdc3c7", "#2c3e50"]
     }
+  ],
+  "convert":[
+    {
+      "name": "rgb",
+      "convertname": ["rgbtohex", "rgbtohsl", "rgbtocmyk", "rgbtohsv","rgbtolab"]
+    },
+    {
+      "name": "hex",
+      "convertname": ["hextorgb", "hextohsl", "hextocmyk", "hextohsv","hextolab"]
+    },
+    {
+      "name": "hsl",
+      "convertname": ["hsltorgb", "hsltohex", "hsltocmyk", "hsltohsv","hsltolab"]
+    },
+    {
+      "name": "cmyk",
+      "convertname": ["cmyktorgb", "cmyktohex", "cmyktohsl", "cmyktohsv","cmyktolab"]
+    },
+    {
+      "name": "hsv",
+      "convertname": ["hsvtorgb", "hsvtohex", "hsvtohsl", "hsvtocmyk","hsvtolab"]
+    },
+    {
+      "name": "lab",
+      "convertname": ["labtorgb", "labtohex", "labtohsl", "labtocmyk","labtohsv"]
+    }
   ]
 }

@@ -195,114 +195,117 @@ export function arrayToObject(array, key) {
   }
   return object;
 }
-export function rgbTohsv (r, g, b) {
+export function rgbTohsv(r, g, b) {
   let rabs, gabs, babs, rr, gg, bb, h, s, v, diff, diffc, percentRoundFn;
   rabs = r / 255;
   gabs = g / 255;
   babs = b / 255;
   v = Math.max(rabs, gabs, babs),
-  diff = v - Math.min(rabs, gabs, babs);
+    diff = v - Math.min(rabs, gabs, babs);
   diffc = c => (v - c) / 6 / diff + 1 / 2;
   percentRoundFn = num => Math.round(num * 100) / 100;
   if (diff == 0) {
-      h = s = 0;
+    h = s = 0;
   } else {
-      s = diff / v;
-      rr = diffc(rabs);
-      gg = diffc(gabs);
-      bb = diffc(babs);
+    s = diff / v;
+    rr = diffc(rabs);
+    gg = diffc(gabs);
+    bb = diffc(babs);
 
-      if (rabs === v) {
-          h = bb - gg;
-      } else if (gabs === v) {
-          h = (1 / 3) + rr - bb;
-      } else if (babs === v) {
-          h = (2 / 3) + gg - rr;
-      }
-      if (h < 0) {
-          h += 1;
-      }else if (h > 1) {
-          h -= 1;
-      }
+    if (rabs === v) {
+      h = bb - gg;
+    } else if (gabs === v) {
+      h = (1 / 3) + rr - bb;
+    } else if (babs === v) {
+      h = (2 / 3) + gg - rr;
+    }
+    if (h < 0) {
+      h += 1;
+    } else if (h > 1) {
+      h -= 1;
+    }
   }
   return {
-      h: Math.round(h * 360),
-      s: percentRoundFn(s * 100),
-      v: percentRoundFn(v * 100)
+    h: Math.round(h * 360),
+    s: percentRoundFn(s * 100),
+    v: percentRoundFn(v * 100)
   };
 }
-export function rgbTocmyk (r,g,b) {
+export function rgbTocmyk(r, g, b) {
   var computedC = 0;
   var computedM = 0;
   var computedY = 0;
   var computedK = 0;
- 
+
   //remove spaces from input RGB values, convert to int
-  var r = parseInt( (''+r).replace(/\s/g,''),10 ); 
-  var g = parseInt( (''+g).replace(/\s/g,''),10 ); 
-  var b = parseInt( (''+b).replace(/\s/g,''),10 ); 
- 
-  if ( r==null || g==null || b==null ||
-      isNaN(r) || isNaN(g)|| isNaN(b) )
-  {
-    alert ('Please enter numeric RGB values!');
+  var r = parseInt(('' + r).replace(/\s/g, ''), 10);
+  var g = parseInt(('' + g).replace(/\s/g, ''), 10);
+  var b = parseInt(('' + b).replace(/\s/g, ''), 10);
+
+  if (r == null || g == null || b == null ||
+    isNaN(r) || isNaN(g) || isNaN(b)) {
+    alert('Please enter numeric RGB values!');
     return;
   }
-  if (r<0 || g<0 || b<0 || r>255 || g>255 || b>255) {
-    alert ('RGB values must be in the range 0 to 255.');
+  if (r < 0 || g < 0 || b < 0 || r > 255 || g > 255 || b > 255) {
+    alert('RGB values must be in the range 0 to 255.');
     return;
   }
- 
+
   // BLACK
-  if (r==0 && g==0 && b==0) {
-   computedK = 1;
-   return [0,0,0,1];
+  if (r == 0 && g == 0 && b == 0) {
+    computedK = 1;
+    return [0, 0, 0, 1];
   }
- 
-  computedC = 1 - (r/255);
-  computedM = 1 - (g/255);
-  computedY = 1 - (b/255);
- 
+
+  computedC = 1 - (r / 255);
+  computedM = 1 - (g / 255);
+  computedY = 1 - (b / 255);
+
   var minCMY = Math.min(computedC,
-               Math.min(computedM,computedY));
-  computedC = (computedC - minCMY) / (1 - minCMY) ;
-  computedM = (computedM - minCMY) / (1 - minCMY) ;
-  computedY = (computedY - minCMY) / (1 - minCMY) ;
+    Math.min(computedM, computedY));
+  computedC = (computedC - minCMY) / (1 - minCMY);
+  computedM = (computedM - minCMY) / (1 - minCMY);
+  computedY = (computedY - minCMY) / (1 - minCMY);
   computedK = minCMY;
- 
-  return [computedC,computedM,computedY,computedK];
+
+  return [computedC, computedM, computedY, computedK];
 }
 
-
-export function parseRGB (color) {
+export function parseRGB(color) {
   if (Array.isArray(color)) {
-      return { r: color[0], g: color[1], b: color[2] };
+    return { r: color[0], g: color[1], b: color[2] };
   } else if (typeof color === 'string') {
-      const result = /^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/.exec(color);
-      if (result) {
-          return {
-              r: parseInt(result[1], 10),
-              g: parseInt(result[2], 10),
-              b: parseInt(result[3], 10)
-          };
-      }
+    const result = /^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/.exec(color);
+    if (result) {
+      return {
+        r: parseInt(result[1], 10),
+        g: parseInt(result[2], 10),
+        b: parseInt(result[3], 10)
+      };
+    }
   }
   return null;
 };
 
-
 export function formatNumber(num) {
   if (typeof num !== 'number' || isNaN(num)) {
-      return '0'; // or any default value you deem appropriate
+    return '0'; // or any default value you deem appropriate
   }
   return num % 1 === 0 ? num.toFixed(0) : num.toFixed(2);
 }
 
-
-export function onCopy (text)  {
+export function onCopy(text) {
   if (typeof window !== 'undefined') {
-      navigator.clipboard.writeText(text);
+    navigator.clipboard.writeText(text);
   }
+};
+
+export const splitAndFormat = (str) => {
+  return str.replace(/([a-z]+)(to)([a-z]+)/i, (_, p1, p2, p3) => {
+    const capitalize = (s) => s.charAt(0).toUpperCase() + s.slice(1);
+    return `${p1.toUpperCase()} ${capitalize(p2)} ${p3.toUpperCase()}`;
+  });
 };
 
 export const hslInput = [{
@@ -342,7 +345,6 @@ export const cmykInput = [{
 },
 ]
 
-
 export const labInput = [{
   label: 'Lightness',
   max: '100',
@@ -350,15 +352,14 @@ export const labInput = [{
 {
   label: 'a',
   max: '127',
-  min:'-128'
- 
+  min: '-128'
+
 }, {
   label: 'b',
   max: '127',
-  min:'-128'
+  min: '-128'
 },
 ]
-
 
 export const rgbInputs = [{
   label: 'Red',
