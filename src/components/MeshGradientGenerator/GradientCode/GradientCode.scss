@@ -1,0 +1,86 @@
+@use '@styles/abstracts' as *;
+
+.gradient-code {
+  min-height: 361px;
+  display: grid;
+  grid-template-rows: minmax(216px, 1fr) auto;
+  background-color: $gradient-code-contour;
+  border: 2px solid $border-color-dark;
+  border-radius: 8px;
+  overflow: hidden;
+
+  &__top {
+    display: grid;
+    grid-template-columns: 42px auto;
+    grid-template-rows: auto 1fr;
+    background-color: $gradient-code-header;
+    border-bottom: 2px solid $border-color-dark;
+  }
+
+  &__bottom {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+
+    @include mq(small) {
+      flex-direction: row;
+    }
+  }
+
+  &__reset-btn {
+    @include oval-button(true, 200px);
+
+    @include mq(small) {
+      @include oval-button(true, 110px);
+    }
+  }
+
+  &__copy-btn {
+    @include oval-button(false, 200px);
+  }
+}
+
+.gradient-code-lines {
+  grid-area: 1 / 1 / span 2 / span 1;
+  width: 42px;
+  padding: 89px 0 24px;
+  background-color: $gradient-code-contour;
+}
+
+.gradient-code-line {
+  font-size: 16px;
+  line-height: $gradient-code-line-height;
+  font-family: $font-code-regular;
+  text-align: center;
+  color: $gradient-code-line;
+}
+
+.gradient-code-label {
+  @include flex-center;
+  width: 101px;
+  height: 57px;
+  grid-area: 1 / 2 / span 1 / span 1;
+  color: $white;
+  font-size: 20px;
+  font-family: $font-main-bold;
+  line-height: $gradient-code-line-height;
+  background-color: $surface-color-dark;
+  border-top-right-radius: 8px;
+}
+
+.gradient-code-preview {
+  grid-area: 2 / 2 / span 1 / span 1;
+  padding: 32px;
+  font-size: 16px;
+  font-family: $font-code-semi-bold;
+  line-height: $gradient-code-line-height;
+  color: $white;
+  background-color: $surface-color-dark;
+
+  &__key {
+    color: $gradient-code-key;
+  }
+}

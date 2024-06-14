@@ -1,0 +1,125 @@
+@use '@styles/abstracts' as *;
+
+.gradient-type-and-angle {
+  @include theme-transition;
+  min-height: 161px;
+  padding: 32px;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-row-gap: 20px;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  @include mq(small) {
+    // width: $section-width;
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+  }
+}
+
+.gradient-type {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+
+  &__buttons-container {
+    display: flex;
+    column-gap: 16px;
+  }
+
+  &__btn {
+    @include oval-button(true, 110px);
+
+    &.active {
+      @include oval-button(false, 110px);
+    }
+  }
+}
+
+.gradient-angle-linear,
+.gradient-angle-radial {
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+}
+
+.gradient-angle-linear {
+
+  &__content {
+    @include flex-center;
+    width: 178px;
+    column-gap: 26px;
+  }
+
+  &__circle {
+    @include clickable-element;
+    @include flex-center;
+    position: relative;
+    width: 62px;
+    height: 62px;
+    scale: 1.6;
+    border-radius: 50%;
+    touch-action: none;
+  }
+
+  &__icon {
+    @include theme-transition;
+    fill: var(--angle-boundary-color);
+    scale: 0.625;
+  }
+
+  &__dot {
+    @include theme-transition;
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    width: 16px;
+    height: 16px;
+    translate: -50%;
+    scale: 0.625;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+  }
+
+  &__input {
+   @include oval-input(90px);
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+}
+
+.gradient-angle-radial {
+
+  &__content {
+    width: 178px;
+  }
+
+  &__square-wrapper {
+    @include clickable-element;
+    border-radius: 12px;
+    scale: 1.6;
+    touch-action: none;
+  }
+
+  &__square {
+    @include theme-transition;
+    position: relative;
+    border: 2px solid var(--angle-boundary-color);
+    border-radius: 12px;
+    scale: 0.625;
+  }
+
+  &__dot {
+    @include theme-transition;
+    @include clickable-element;
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    translate: -50% -50%;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+  }
+}

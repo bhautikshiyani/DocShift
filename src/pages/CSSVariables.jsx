@@ -11,7 +11,6 @@ const CSSVariables = () => {
     const [colour, setColour] = useState("#ff0000");
     const [shades, setShades] = useState([]);
     const [code, setCode] = useState('css');
-
     const [count, setCount] = useState(20);
     const handleIncrease = () => {
         if (count > 20) {
@@ -19,19 +18,16 @@ const CSSVariables = () => {
             setCount(Increase);
         }
     };
-
     const handleDecrease = () => {
         if (count < 36) {
             const Increase = (count === 21 || count === 26 || count === 31) ? count + 5 : count + 1;
             setCount(Increase);
         }
     };
-
     const fetchShades = (color, count) => {
         try {
             const shades = new Values(color).all(count);
             setShades(shades);
-
         } catch (err) {
 
         }
@@ -39,12 +35,10 @@ const CSSVariables = () => {
     useEffect(() => {
         fetchShades(colour, count);
     }, [colour, count]);
-
     const copyColor = (color) => () => {
         navigator.clipboard.writeText(`#${color.hex}`);
-      
-    };
 
+    };
     return (
         <div className='p-4 rounded-[12px] bg-[var(--theme-surface-body-pane)] dark:bg-[var(--theme-surface-container)]'>
             <div className='max-w-full mb-8 md:max-w-[50%]'>
@@ -154,81 +148,74 @@ const CSSVariables = () => {
                             </Tooltip.Provider>
                         </div>
                     </div>
-
                     <div className="code-block-content relative p-3 bg-[var(--theme-surface-container-low)] rounded-b-[8px]">
                         <div className='absolute top-[10px] right-[10px]'>
-
                             <div className={classNames("transition-all text-black dark:text-white duration-300 text-sm font-bold rounded-[10px] after:w-full after:absolute relative after:-bottom-[6px] after:right-0 after:h-0.5", code === "scss" ? "after:bg-[#cc6699]" : 'after:bg-[#2965f1]')} >
                                 {code === "scss" ? 'scss' : 'css'}
                             </div>
                         </div>
-                        {
-                            code === "scss" ?
-                                <pre>
-                                    <code className='flex flex-col'>
-                                        <div className="inline-table">
-                                            <span className="text-[var(--theme-code-comment)] italic  text-xs">/** SCSS PRIMARY COLORS */</span>
+                        {code === "scss" ?
+                            <pre>
+                                <code className='flex flex-col'>
+                                    <div className="inline-table">
+                                        <span className="text-[var(--theme-code-comment)] italic  text-xs">/** SCSS PRIMARY COLORS */</span>
+                                    </div>
+                                    {shades.map((color, ind) => (
+                                        <div className="inline-table min-h-[1rem]" key={ind}>
+                                            <span style={{ color: `#${color.hex}` }} className=''>
+                                                <FaSquare className='inline-flex border rounded-[3px] align-middle mr-1' />
+                                            </span>
+                                            <span className="text-[var(--theme-code-scss-property)] text-xs">$primary-{ind === 0 ? 50 : ind * 100}: </span>
+                                            <span className="token number text-[var(--theme-code-number)] text-xs">{`#${color.hex}`}</span>;
                                         </div>
-                                        {shades.map((color, ind) => (
-
-                                            <div className="inline-table min-h-[1rem]" key={ind}>
-                                                <span style={{ color: `#${color.hex}` }} className=''>
-                                                    <FaSquare className='inline-flex border rounded-[3px] align-middle mr-1' />
-                                                </span>
-                                                <span className="text-[var(--theme-code-scss-property)] text-xs">$primary-{ind === 0 ? 50 : ind * 100}: </span>
-                                                <span className="token number text-[var(--theme-code-number)] text-xs">{`#${color.hex}`}</span>;
-                                            </div>
-
-                                        ))}
-
-                                        <div className="text-black dark:text-white">
+                                    ))}
+                                    <div className="text-black dark:text-white">
+                                    </div>
+                                    <div className="text-black dark:text-white">
+                                        <span className="text-[var(--theme-code-comment)] text-xs italic">/** EXAMPLES */</span>
+                                    </div>
+                                    <div className="text-black dark:text-white">
+                                        <span className="text-[var(--theme-code-property)] text-xs">color: </span>
+                                        <span className="text-[var(--theme-code-scss-property)] text-xs">$primary-a50</span>
+                                        ;
+                                    </div>
+                                    <div className="text-black dark:text-white">
+                                        <span className="text-[var(--theme-code-property)] text-xs">background-color: </span>
+                                        <span className="text-[var(--theme-code-scss-property)] text-xs">$primary-a90</span>
+                                        ;
+                                    </div>
+                                </code>
+                            </pre>
+                            :
+                            <pre>
+                                <code>
+                                    <div className="text-black dark:text-white">
+                                        <span className="text-[var(--theme-code-comment)] text-xs italic">/** CSS PRIMARY COLORS */</span>
+                                    </div>
+                                    {shades.map((color, ind) => (
+                                        <div className="text-black dark:text-white" key={ind}>
+                                            <span className="text-[var(--theme-code-scss-property)] text-xs">--color-primary-{ind === 0 ? 50 : ind * 100}: </span>
+                                            <span className="text-[var(--theme-code-number)] text-xs">{`#${color.hex}`}</span>;
                                         </div>
-                                        <div className="text-black dark:text-white">
-                                            <span className="text-[var(--theme-code-comment)] text-xs italic">/** EXAMPLES */</span>
-                                        </div>
-                                        <div className="text-black dark:text-white">
-                                            <span className="text-[var(--theme-code-property)] text-xs">color: </span>
-                                            <span className="text-[var(--theme-code-scss-property)] text-xs">$primary-a50</span>
-                                            ;
-                                        </div>
-                                        <div className="text-black dark:text-white">
-                                            <span className="text-[var(--theme-code-property)] text-xs">background-color: </span>
-                                            <span className="text-[var(--theme-code-scss-property)] text-xs">$primary-a90</span>
-                                            ;
-                                        </div>
-                                    </code>
-                                </pre>
-                                :
-                                <pre>
-                                    <code>
-                                        <div className="text-black dark:text-white">
-                                            <span className="text-[var(--theme-code-comment)] text-xs italic">/** CSS PRIMARY COLORS */</span>
-                                        </div>
-                                        {shades.map((color, ind) => (
-                                            <div className="text-black dark:text-white" key={ind}>
-                                                <span className="text-[var(--theme-code-scss-property)] text-xs">--color-primary-{ind === 0 ? 50 : ind * 100}: </span>
-                                                <span className="text-[var(--theme-code-number)] text-xs">{`#${color.hex}`}</span>;
-                                            </div>
-                                        ))}
-                                        <div className="text-black dark:text-white">
-                                            <span className="text-[var(--theme-code-comment)] text-xs italic">/** EXAMPLES */</span>
-                                        </div>
-                                        <div className="text-black dark:text-white">
-                                            <span className="text-[var(--theme-code-property)] text-xs">color: </span>
-                                            <span className="text-[var(--theme-code-scss-property)] text-xs">var(--color-primary-50)</span>
-                                            ;
-                                        </div>
-                                        <div className="text-black dark:text-white">
-                                            <span className="text-[var(--theme-code-property)] text-xs">background-color: </span>
-                                            <span className="text-[var(--theme-code-scss-property)] text-xs">var(--color-primary-900)</span>
-                                            ;
-                                        </div>
-                                    </code>
-                                </pre>
+                                    ))}
+                                    <div className="text-black dark:text-white">
+                                        <span className="text-[var(--theme-code-comment)] text-xs italic">/** EXAMPLES */</span>
+                                    </div>
+                                    <div className="text-black dark:text-white">
+                                        <span className="text-[var(--theme-code-property)] text-xs">color: </span>
+                                        <span className="text-[var(--theme-code-scss-property)] text-xs">var(--color-primary-50)</span>
+                                        ;
+                                    </div>
+                                    <div className="text-black dark:text-white">
+                                        <span className="text-[var(--theme-code-property)] text-xs">background-color: </span>
+                                        <span className="text-[var(--theme-code-scss-property)] text-xs">var(--color-primary-900)</span>
+                                        ;
+                                    </div>
+                                </code>
+                            </pre>
                         }
                     </div>
                 </div>
-
             </div>
         </div>
     );
