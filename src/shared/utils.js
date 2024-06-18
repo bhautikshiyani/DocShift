@@ -1,3 +1,4 @@
+import { useState } from "react"
 import { hexColorRegExp, defaultHexColor } from "./constants"
 
 export const splitGradientString = gradientString => {
@@ -389,3 +390,14 @@ export const hsvInput = [{
   symbol: '%'
 },
 ]
+
+
+
+export const useGenerateRandomColor = () => {
+  const [color, setColor] = useState("")
+  const generateColor = () => {
+      setColor(Math.random().toString(16).substr(-6));
+  };
+  return { color, generateColor };
+
+};

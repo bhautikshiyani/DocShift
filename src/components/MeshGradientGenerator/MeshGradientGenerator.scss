@@ -1,1 +1,37 @@
 @use '@styles/abstracts' as *;
+
+
+
+
+.SliderRoot {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 200px;
+    height: 20px;
+  }
+  
+  .SliderTrack {
+    background-color: #e4e4e7;
+    position: relative;
+    flex-grow: 1;
+    border-radius: 9999px;
+    height: 3px;
+  }
+  
+  .SliderRange {
+    position: absolute;
+    background-color: #3b82f6;
+    border-radius: 9999px;
+    height: 100%;
+  }
+  
+  .SliderThumb {
+    display: block;
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    border: 1px solid #3b82f6;
+    border-radius: 50%;
+    cursor: pointer;
+  }

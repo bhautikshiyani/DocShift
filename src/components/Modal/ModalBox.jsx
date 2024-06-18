@@ -54,7 +54,6 @@ export default function ModalBox(props) {
                                     </DialogTitle>
                                     <div className="bg-gray-800 text-white p-4 rounded-lg">
                                         <div className='w-full h-[80px]'>
-
                                             <CustomScrollbars>
                                                 <pre className="">
                                                     {formattedCssCode}

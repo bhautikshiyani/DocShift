@@ -15,19 +15,17 @@ import Home from "@pages/Home";
 import CSSVariables from "@pages/CSSVariables";
 import Convert from "@pages/Convert";
 import ConvertColor from "./pages/Convert/[slug]";
-
 import ColorPickerCanvas from "./pages/ImagetoColor/ImagetoColor";
 import MeshGradientGenerator from "./components/MeshGradientGenerator";
 
 
 const App = () => {
-
   return (
     <>
       <Tooltip style={{ fontSize: '12px', padding: '6px 10px', zIndex: '9999999999' }} id="my-tooltip" />
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route path="/imagetocolor" element={<Home />} />
+          <Route path="/" element={<Home />} />
           <Route path="gradient" element={<Gradient />} />
           <Route path="color-shades" element={<ColorShades />} />
           <Route path="css-generator" element={<CSSVariables />} />
@@ -35,11 +33,10 @@ const App = () => {
           <Route path='color-shades/generate/json' element={<GenerateColorShadesJson />} />
           <Route path="convert" element={<Convert />} />
           <Route path="convert/:slug" element={<ConvertColor />} />
-          <Route path="/" element={<ColorPickerCanvas />} />
+          <Route path="/imagetocolor" element={<ColorPickerCanvas />} />
           <Route path="color-shades/:slug" element={<ColorShadesDetails />} />
           <Route path="swatches" element={<Swatches />} />
           <Route path="mesh-gradient-generator" element={<MeshGradientGenerator />} />
-
           <Route path="swatches/:name" element={<GradientsShadesDetails />} />
           <Route path="privacy-policy" element={<PrivacyPolicy />} />
         </Route>
