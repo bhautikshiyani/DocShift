@@ -7,7 +7,7 @@ import * as Tooltip from '@radix-ui/react-tooltip';
 import { FaRegClipboard } from "react-icons/fa";
 import classNames from 'classnames';
 
-const CSSVariables = () => {
+const CSSVariables = () => { 
     const [colour, setColour] = useState("#ff0000");
     const [shades, setShades] = useState([]);
     const [code, setCode] = useState('css');

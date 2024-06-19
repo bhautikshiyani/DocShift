@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Draggable from 'react-draggable';
 import * as Popover from '@radix-ui/react-popover';
 import { HexColorPicker } from 'react-colorful';
@@ -6,18 +6,26 @@ import { HiPlus } from 'react-icons/hi';
 import CustomScrollbars from '../../shared/CustomScrollbars';
 import { MdDeleteOutline } from "react-icons/md";
 import { v4 as uuidv4 } from "uuid";
+import { useContainerDimensions } from '../../hooks/useContainerDimensions';
 function MeshGradientGenerator() {
-
+    const componentRef = useRef()
+    const { width, height } = useContainerDimensions(componentRef)
     const [colors, setColors] = useState([{ color: '#000', position: { x: 50, y: 50 }, id: uuidv4() }]);
     const [backgroundColor, setBackgroundColor] = useState('#fff');
     const [newColor, setNewColor] = useState('#FFFFFF');
+    function randomInt(min, max) {
+        return Math.round(min + Math.random()*(max-min));
+    }
     useEffect(()=>{
         setBackgroundColor(`#${Math.random().toString(16).substr(-6)}`);
         setNewColor(`#${Math.random().toString(16).substr(-6)}`);
-
+        setColors([{ color: `#${Math.random().toString(16).substr(-6)}`, position: { x: 50, y: 50 }, id: uuidv4() }])
     },[])
     const addColor = () => {
-        setColors([...colors, { color: newColor, position: { x: 50, y: 50 }, id: uuidv4() }]);
+        var posX = randomInt(1, 100);
+        var posY = randomInt(1, 100);
+        setNewColor(`#${Math.random().toString(16).substr(-6)}`);
+        setColors([...colors, { color: newColor, position: { x: posX, y: posY }, id: uuidv4() }]);
     };
 
     const updateColor = (index, color) => {
@@ -35,7 +43,7 @@ function MeshGradientGenerator() {
 
     const handleDrag = (e, data, index) => {
         const updatedColors = colors.map((c, i) =>
-            i === index ? { ...c, position: { x: (data.x / window.innerWidth) * 100, y: (data.y / 400) * 100 } } : c
+            i === index ? { ...c, position: { x: (data.x / width) * 100, y: (data.y / height) * 100 } } : c
         );
         setColors(updatedColors);
     };
@@ -46,9 +54,9 @@ function MeshGradientGenerator() {
         ).join(', ')}, ${backgroundColor}`,
         position: 'relative',
     };
-
+   
     return (
-        <div className=" flex h-[78vh]  flex-grow min-h-[300px]">
+        <div  className=" flex h-[78vh]  flex-grow min-h-[300px]">
             <div className='max-w-[290px]  w-full'>
                 <CustomScrollbars
                     autoHide={false}
@@ -156,14 +164,14 @@ function MeshGradientGenerator() {
                     </div>
                 </CustomScrollbars>
             </div>
-            <div className="border flex-1 w-full border-black rounded" style={gradientStyle}>
+            <div ref={componentRef} className="border flex-1 w-full border-black rounded" style={gradientStyle}>
                 {colors.map((c, index) => (
                     <Draggable
                         key={c.id}
                         bounds="parent"
                         position={{
-                            x: (c.position.x / 100) * window.innerWidth,
-                            y: (c.position.y / 100) * 400
+                            x: (c.position.x / 100) * width,
+                            y: (c.position.y / 100) * height
                         }}
                         onStop={(e, data) => handleDrag(e, data, index)}
                     >
