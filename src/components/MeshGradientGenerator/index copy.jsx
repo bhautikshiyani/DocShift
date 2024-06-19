@@ -1,84 +1,36 @@
 import React, { useEffect, useRef, useState } from 'react';
+import Draggable from 'react-draggable';
 import * as Popover from '@radix-ui/react-popover';
 import { HexColorPicker } from 'react-colorful';
 import { HiPlus } from 'react-icons/hi';
 import CustomScrollbars from '../../shared/CustomScrollbars';
 import { MdDeleteOutline } from "react-icons/md";
 import { v4 as uuidv4 } from "uuid";
-import { RiDownloadLine } from 'react-icons/ri';
-import { IoCodeSharp } from 'react-icons/io5';
-import CodeBox from './CodeBox';
 import { useContainerDimensions } from '../../hooks/useContainerDimensions';
+import { RiDownloadLine } from 'react-icons/ri';
+import html2canvas from 'html2canvas';
+import { IoCodeSharp } from 'react-icons/io5';
+import ModalBox from '@components/Modal/ModalBox';
+import CodeBox from './CodeBox';
 
 function MeshGradientGenerator() {
-    const canvasRef = useRef(null);
     const componentRef = useRef()
+    let [isOpen, setIsOpen] = useState(false)
     const { width, height } = useContainerDimensions(componentRef)
-    let [isOpen, setIsOpen] = useState(false);
     const [colors, setColors] = useState([{ color: '#000', position: { x: 50, y: 50 }, id: uuidv4() }]);
     const [backgroundColor, setBackgroundColor] = useState('#fff');
     const [newColor, setNewColor] = useState('#FFFFFF');
-    const [isDragging, setIsDragging] = useState(false);
-    const [dragIndex, setDragIndex] = useState(null);
-
+    function randomInt(min, max) {
+        return Math.round(min + Math.random() * (max - min));
+    }
     useEffect(() => {
         setBackgroundColor(`#${Math.random().toString(16).substr(-6)}`);
         setNewColor(`#${Math.random().toString(16).substr(-6)}`);
-        setColors([{ color: `#${Math.random().toString(16).substr(-6)}`, position: { x: 50, y: 50 }, id: uuidv4() }]);
-    }, []);
-
-    useEffect(() => {
-        const canvas = canvasRef.current;
-        const ctx = canvas.getContext('2d');
-        drawCanvas(ctx);
-    }, [colors, backgroundColor , width, height ]);
-
-    const drawCanvas = (ctx) => {
-        // Clear the canvas
-        ctx.clearRect(0, 0, width, height);
-
-        // Draw the background color
-        ctx.fillStyle = backgroundColor;
-        ctx.fillRect(0, 0, width, height);
-
-        // Draw the gradients
-        colors.forEach((c) => {
-            const gradient = ctx.createRadialGradient(
-                (c.position.x / 100) * width,
-                (c.position.y / 100) * height,
-                0,
-                (c.position.x / 100) * width,
-                (c.position.y / 100) * height,
-                Math.max(width, height) / 2
-            );
-            gradient.addColorStop(0, c.color);
-            gradient.addColorStop(1, 'transparent');
-            ctx.fillStyle = gradient;
-            ctx.fillRect(0, 0, width, height);
-        });
-
-        // Draw the draggable color points
-        colors.forEach((c) => {
-            ctx.beginPath();
-            ctx.arc(
-                (c.position.x / 100) * width,
-                (c.position.y / 100) * height,
-                10,
-                0,
-                Math.PI * 2,
-                false
-            );
-            ctx.fillStyle = c.color;
-            ctx.fill();
-            ctx.lineWidth = 2;
-            ctx.strokeStyle = '#000';
-            ctx.stroke();
-        });
-    };
-
+        setColors([{ color: `#${Math.random().toString(16).substr(-6)}`, position: { x: 50, y: 50 }, id: uuidv4() }])
+    }, [])
     const addColor = () => {
-        const posX = randomInt(1, 100);
-        const posY = randomInt(1, 100);
+        var posX = randomInt(1, 100);
+        var posY = randomInt(1, 100);
         setNewColor(`#${Math.random().toString(16).substr(-6)}`);
         setColors([...colors, { color: newColor, position: { x: posX, y: posY }, id: uuidv4() }]);
     };
@@ -87,66 +39,45 @@ function MeshGradientGenerator() {
         const updatedColors = colors.map((c, i) => (i === index ? { ...c, color } : c));
         setColors(updatedColors);
     };
-
     const deleteColor = (index) => {
         if (colors.length > 1) {
-            const filteredPalettes = colors.filter((palette) => palette.id !== index.id).sort((paletteA, paletteB) => paletteA.position - paletteB.position);
+            const filteredPalettes = colors
+                .filter((palette) => palette.id !== index.id)
+                .sort((paletteA, paletteB) => paletteA.position - paletteB.position);
             setColors(filteredPalettes);
         }
     };
 
-    const randomInt = (min, max) => Math.round(min + Math.random() * (max - min));
-
-    const handleMouseDown = (e) => {
-        const canvas = canvasRef.current;
-        const rect = canvas.getBoundingClientRect();
-        const x = ((e.clientX - rect.left) / rect.width) * 100;
-        const y = ((e.clientY - rect.top) / rect.height) * 100;
-
-        const index = colors.findIndex(c => {
-            const dx = c.position.x - x;
-            const dy = c.position.y - y;
-            return Math.sqrt(dx * dx + dy * dy) < 2; // Adjust for hitbox size
-        });
-
-        if (index !== -1) {
-            setIsDragging(true);
-            setDragIndex(index);
-        }
-    };
-
-    const handleMouseMove = (e) => {
-        if (!isDragging) return;
-        const canvas = canvasRef.current;
-        const rect = canvas.getBoundingClientRect();
-        const x = ((e.clientX - rect.left) / rect.width) * 100;
-        const y = ((e.clientY - rect.top) / rect.height) * 100;
-
+    const handleDrag = (e, data, index) => {
         const updatedColors = colors.map((c, i) =>
-            i === dragIndex ? { ...c, position: { x, y } } : c
+            i === index ? { ...c, position: { x: (data.x / width) * 100, y: (data.y / height) * 100 } } : c
         );
         setColors(updatedColors);
     };
 
-    const handleMouseUp = () => {
-        setIsDragging(false);
-        setDragIndex(null);
+    const gradientStyle = {
+        background: `${colors.map(
+            (c) => `radial-gradient(at ${c.position.x}% ${c.position.y}%, ${c.color} 0px, transparent 50%)`
+        ).join(', ')}, ${backgroundColor}`,
+        position: 'relative',
     };
-
     const downloadImage = () => {
-        const canvas = canvasRef.current;
-        const link = document.createElement('a');
-        link.href = canvas.toDataURL('image/png');
-        link.download = 'mesh-gradient.png';
-        link.click();
+        const element = document.getElementById('gradientDiv');
+        html2canvas(element).then((canvas) => {
+            const link = document.createElement('a');
+            link.href = canvas.toDataURL('image/png');
+            link.download = name;
+            link.click();
+        });
     };
-
     function open() {
-        setIsOpen(true);
+        setIsOpen(true)
     }
 
+    const canvasRef = useRef(null);
+
     return (
-        <div className="flex h-[78vh] flex-grow min-h-[300px]">
+        <div className=" flex h-[78vh]  flex-grow min-h-[300px]">
             <button
                 data-tooltip-id="my-tooltip"
                 data-tooltip-content="Get .png"
@@ -270,20 +201,28 @@ function MeshGradientGenerator() {
                     </div>
                 </CustomScrollbars>
             </div>
-            <div ref={componentRef} className='flex-1 w-full'>
-            <canvas
-                id="canvas"
-                ref={canvasRef}
-                className="crosshair  shadow thumb canvas-crosshair"
-                width={width}
-                height={height}
-                onMouseDown={handleMouseDown}
-                onMouseMove={handleMouseMove}
-                onMouseUp={handleMouseUp}
-            ></canvas>
-
+            <div ref={componentRef} className="border flex-1 w-full " style={gradientStyle}>
+                <div id="gradientDiv" className="!absolute inset-0 " style={gradientStyle}></div>
+                {colors.map((c, index) => (
+                    <Draggable
+                        key={c.id}
+                        bounds="parent"
+                        position={{
+                            x: (c.position.x / 100) * width,
+                            y: (c.position.y / 100) * height
+                        }}
+                        onStop={(e, data) => handleDrag(e, data, index)}
+                    >
+                        <div
+                            style={{ backgroundColor: c.color, cursor: 'pointer', position: 'absolute' }}
+                            className="w-6 h-6 focus:outline-none ring-2 ring-black ring-offset-2 rounded-full"
+                        />
+                    </Draggable>
+                ))}
             </div>
+        
             <CodeBox isOpen={isOpen} colors={colors} backgroundColor={backgroundColor} setIsOpen={setIsOpen} />
+
         </div>
     );
 }

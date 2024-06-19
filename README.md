@@ -48,22 +48,7 @@ Deploy to the server
   npm run build
 ```
 
-## Installation
 
-To get started, clone the repository and install the necessary dependencies:
-
-```bash
-  git clone https://github.com/yourusername/gradient-generator.git
-  cd gradient-generator
-  nvm use v18
-  npm install
-```
-
-Run Project:
-
-```bash
-  npm run dev
-```
 ## Contributing
 
 We welcome contributions to enhance the Gradient Generator! Please read our [contributing guidelines](https://www.github.com/contributing) for more information.
