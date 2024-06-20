@@ -31,7 +31,7 @@ function MeshGradientGenerator() {
         const canvas = canvasRef.current;
         const ctx = canvas.getContext('2d');
         drawCanvas(ctx);
-    }, [colors, backgroundColor , width, height ]);
+    }, [colors, backgroundColor, width, height]);
 
     const drawCanvas = (ctx) => {
         // Clear the canvas
@@ -202,22 +202,7 @@ function MeshGradientGenerator() {
                                 <label className="dark:text-white mb-2 block text-fs-sm-400 font-bold text-black">Background Color</label>
                                 <div className='flex gap-2 items-center'>
                                     <div className='flex border p-2 rounded-md'>
-                                        <Popover.Root>
-                                            <Popover.Trigger asChild>
-                                                <button className="w-[1.5rem] flex-none h-[1.5rem] border rounded-[3px]" style={{ backgroundColor: newColor }} aria-label="Update dimensions"> </button>
-                                            </Popover.Trigger>
-                                            <Popover.Portal>
-                                                <Popover.Content
-                                                    className="rounded-[12px] shadow-xl bg-[var(--theme-surface-body-pane)] dark:bg-[var(--theme-surface-container)] will-change-[transform,opacity] data-[state=open]:data-[side=top]:animate-slideDownAndFade data-[state=open]:data-[side=right]:animate-slideLeftAndFade data-[state=open]:data-[side=bottom]:animate-slideUpAndFade data-[state=open]:data-[side=left]:animate-slideRightAndFade"
-                                                    sideOffset={5}
-                                                >
-                                                    <div className='custom-layout'>
-                                                        <HexColorPicker color={newColor} onChange={(color) => setNewColor(color)} />
-                                                    </div>
-                                                    <Popover.Arrow className="fill-[var(--theme-surface-body-pane)] dark:fill-[var(--theme-surface-container)]" />
-                                                </Popover.Content>
-                                            </Popover.Portal>
-                                        </Popover.Root>
+
                                         <input
                                             type='text'
                                             required
@@ -226,7 +211,7 @@ function MeshGradientGenerator() {
                                             className='dark:text-white w-full p-0 px-3 text-black bg-transparent focus:shadow-none border-none focus:outline-none focus:ring-0 focus:border-none'
                                         />
                                     </div>
-                                    <button  className="bg-blue-500 w-[41px] h-[41px] flex items-center justify-center text-white text-[20px] flex-none rounded" onClick={addColor}>
+                                    <button className="bg-blue-500 w-[41px] h-[41px] flex items-center justify-center text-white text-[20px] flex-none rounded" onClick={addColor}>
                                         <HiPlus />
                                     </button>
                                 </div>
@@ -271,17 +256,16 @@ function MeshGradientGenerator() {
                 </CustomScrollbars>
             </div>
             <div ref={componentRef} className='flex-1 w-full'>
-            <canvas
-                id="canvas"
-                ref={canvasRef}
-                className="crosshair  shadow thumb canvas-crosshair"
-                width={width}
-                height={height}
-                onMouseDown={handleMouseDown}
-                onMouseMove={handleMouseMove}
-                onMouseUp={handleMouseUp}
-            ></canvas>
-
+                <canvas
+                    id="canvas"
+                    ref={canvasRef}
+                    className="crosshair  shadow thumb canvas-crosshair"
+                    width={width}
+                    height={height}
+                    onMouseDown={handleMouseDown}
+                    onMouseMove={handleMouseMove}
+                    onMouseUp={handleMouseUp}
+                ></canvas>
             </div>
             <CodeBox isOpen={isOpen} colors={colors} backgroundColor={backgroundColor} setIsOpen={setIsOpen} />
         </div>

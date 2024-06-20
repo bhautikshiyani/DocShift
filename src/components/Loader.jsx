@@ -2,7 +2,6 @@ import React from 'react'
 
 const Loader = () => {
     return (
-
         <>
             <svg width="50" height="50" viewBox="0 0 135 140" xmlns="http://www.w3.org/2000/svg" data-testid="bars-svg">
                 <rect y="10" width="15" fill="#d7263d" height="120" rx="6">

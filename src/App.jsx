@@ -25,7 +25,7 @@ const App = () => {
       <Tooltip style={{ fontSize: '12px', padding: '6px 10px', zIndex: '9999999999' }} id="my-tooltip" />
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route path="/" element={<MeshGradientGenerator />} />
+          <Route path="/" element={<ColorPickerCanvas />} />
           <Route path="gradient" element={<Gradient />} />
           <Route path="color-shades" element={<ColorShades />} />
           <Route path="css-generator" element={<CSSVariables />} />
