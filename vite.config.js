@@ -1,10 +1,18 @@
-import { defineConfig } from 'vite'
+import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import svgr from 'vite-plugin-svgr';
 import path from 'path';
+import Sitemap from 'vite-plugin-sitemap';
 
 export default defineConfig({
-  plugins: [react(), svgr()],
+  plugins: [
+    react(),
+    svgr(),
+    Sitemap({
+      hostname: 'https://devtec.tech',
+      // Additional sitemap options can be added here
+    }),
+  ],
   resolve: {
     alias: {
       '@components': path.resolve(__dirname, 'src/components'),
