@@ -10,6 +10,8 @@ export default defineConfig({
     svgr(),
     Sitemap({
       hostname: 'https://devtec.tech',
+      dynamicRoutes: ['/gradient', '/color-shades', '/css-generator', 'color-shades/generate'],
+      changefreq: 'daily'
       // Additional sitemap options can be added here
     }),
   ],
